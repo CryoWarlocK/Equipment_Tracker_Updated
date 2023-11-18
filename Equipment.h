@@ -120,4 +120,5 @@ void dummyData() {
     dll.insertFirst("Logic Analyzer", "Measurement", "Agilent 16802A", "LA-13579", false);
     dll.insertFirst("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
     dll.insertFirst("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
+    dll.print();
 }
