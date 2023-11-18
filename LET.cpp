@@ -18,6 +18,7 @@ void runProgram() {
     cout << "5. Delete an Equipment " << endl;
     cout << "6. Search Equipment " << endl;
     cout << "______________________________________________________" << endl;
+
     cin >> Opt;
     switch (Opt) {
     case 1:     //for lend equipments
