@@ -17,6 +17,7 @@ void runProgram() {
     cout << "4. See all the equipment (sorted) " << endl;
     cout << "5. Delete an Equipment " << endl;
     cout << "6. Search Equipment " << endl;
+    cout << "7. Sample Data Display " << endl;
     cout << "______________________________________________________" << endl;
 
     cin >> Opt;
@@ -26,6 +27,10 @@ void runProgram() {
         break;
     case 2:
         cout << "Add Equipment option selected" << endl;
+        break;
+    case 7:
+        cout << "Sample data display option selected" << endl;
+        dummyData();
         break;
     default:
         cout << "Please enter a valid option key" << endl;
