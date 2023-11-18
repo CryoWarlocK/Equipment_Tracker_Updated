@@ -97,7 +97,7 @@ public:
     }
 
 };
-
+//dummy data 
 void dummyData() {
     EquipmentList dll;
     dll.insertFirst("Oscilloscope", "Measurement", "Tektronix TDS210", "OS-12345", true);
