@@ -7,9 +7,13 @@
 
 
 
-/*void runProgram() {
+void runProgram() {
     int Opt;
+    cout << "_____________Lab Equipment Tracker Version 1.0______________" << endl;
     cout << "Enter a option" << endl;
+    cout << "1.Lend Equipment" << endl;
+    cout << "2.Add Equipment " << endl;
+    cout << "______________________________________________________" << endl;
     cin >> Opt;
     switch (Opt) {
     case 1:     //for lend equipments
@@ -22,11 +26,11 @@
         cout << "Please enter a valid option key" << endl;
         break;
     }
-}*/
+}
 
 int main() {
-    // runProgram();
-    EquipmentList dll;
+    runProgram();
+   /* EquipmentList dll;
     dll.insertFirst("Oscilloscope", "Measurement", "Tektronix TDS210", "OS-12345", true);
     dll.insertFirst("Function Generator", "Signal Generator", "Agilent 33500B", "FG-67890", false);
     dll.insertFirst("Multimeter", "Measurement", "Fluke 87V", "MM-24680", true);
@@ -48,6 +52,7 @@ int main() {
     dll.insertFirst("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
     dll.insertFirst("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
     dll.print();
+    */
     return 45;
 }
 
