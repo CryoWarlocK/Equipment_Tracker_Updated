@@ -13,7 +13,7 @@ void runProgram() {
     cout << "Enter a option" << endl;
     cout << "1.Lend Equipment" << endl;
     cout << "2.Add Equipment " << endl;
-    cout << "______________________________________________________" << endl;
+    cout << "_____________________________________________________________" << endl;
     cin >> Opt;
     switch (Opt) {
     case 1:     //for lend equipments
