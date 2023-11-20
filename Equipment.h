@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-
+//Node
 class LabEquipment {
 public:
     string name;        //equipment name
@@ -76,6 +76,7 @@ public:
             size++;
         }
     }
+
 
     void print() {
 
