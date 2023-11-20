@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-//Node
+//Node in our code
 class LabEquipment {
 public:
     string name;        //equipment name
