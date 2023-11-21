@@ -37,10 +37,11 @@ int main() {
     dll.insertFirst("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
     dll.insertFirst("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
 
-    int i = 0;
-    while (i == 0) {
+    bool isRunning = true;  // Boolean variable to control the loop
+    while (isRunning) {
         int Opt;
         string selectedCategory = "NULL";
+        cout << "                                                            " << endl;
         cout << "_____________Lab Equipment Tracker Version 1.0______________" << endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
@@ -50,7 +51,8 @@ int main() {
         cout << "5. Delete an Equipment " << endl;
         cout << "6. Search Equipment " << endl;
         cout << "7. Sample Data Display " << endl;
-        cout << "______________________________________________________" << endl;
+        cout << "8. Exit " << endl;
+        cout << "_____________________________________________________________" << endl;
         cin >> Opt;
 
         switch (Opt) {
@@ -72,6 +74,10 @@ int main() {
             cout << "Sample data display option selected" << endl;
             
             break;
+        case 8:
+            isRunning = false;  // Set the boolean variable to false to exit the loop
+            break;
+
         default:
             cout << "Please enter a valid option key" << endl;
             break;
