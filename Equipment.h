@@ -76,6 +76,22 @@ public:
             size++;
         }
     }
+    void insertLast(string N, string cat, string mod, string Snum, bool lent) {
+        //Create the node
+        LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent);
+
+        if (head == NULL) {
+            head = temp;
+            tail = temp;
+            size++;
+        }
+        else {
+            tail->next = temp;
+            temp->prev = tail; //*************
+            tail = temp;
+            size++;
+        }
+    }
 
 
     void print() {
