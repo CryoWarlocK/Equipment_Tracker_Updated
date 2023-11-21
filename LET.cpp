@@ -8,13 +8,13 @@
 
 
 void runProgram() {
+ 
     
 }
 
 
 
 int main() {
-    int i = 0;
     EquipmentList dll;
     dll.insertFirst("Oscilloscope", "Measurement", "Tektronix TDS210", "OS-12345", true);
     dll.insertFirst("Function Generator", "Signal Generator", "Agilent 33500B", "FG-67890", false);
@@ -37,8 +37,10 @@ int main() {
     dll.insertFirst("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
     dll.insertFirst("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
 
-    while (i == 1) {
+    int i = 0;
+    while (i == 0) {
         int Opt;
+        string selectedCategory = "NULL";
         cout << "_____________Lab Equipment Tracker Version 1.0______________" << endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
@@ -49,8 +51,8 @@ int main() {
         cout << "6. Search Equipment " << endl;
         cout << "7. Sample Data Display " << endl;
         cout << "______________________________________________________" << endl;
-
         cin >> Opt;
+
         switch (Opt) {
         case 1:     //for lend equipments
             cout << "Lend Equipment option selected" << endl;
@@ -61,11 +63,10 @@ int main() {
             cout << "Please select a category from below list to add a equipment" << endl;
             dll.printUniqueCategories();
             cout << "____________________________________" << endl;
-            string selectedCategory = "NULL";
             cout << "Please enter a category from above list" << endl;
             cin >> selectedCategory;
             cout << "Here are all the equipment in the category you selected" << endl;
-            dll.filterByCategory("temp");
+            dll.filterByCategory(selectedCategory);
             break;
         case 7:
             cout << "Sample data display option selected" << endl;
@@ -77,28 +78,7 @@ int main() {
         }
 
     }
-    //runProgram();
-    
-    
-    
-    //dummyData();
-   /* 
-    dll.print();
-    */
-
-
-    
-
-   
-    return 45;
+  
+    return 0;
 }
 
-
-
-//insertFirst(string N, string cat, string mod,string Snum, bool lent)
-/*
-
-*/
-
-
-//dummy data 
