@@ -156,4 +156,21 @@ public:
         cout << endl;
     }
 
+    void addEquipmentToCategory(const string& category, const string& name, const string& model, const string& serial, bool isLent) {
+        // Create the equipment
+        LabEquipment* temp = new LabEquipment(name, category, model, serial, isLent);
+
+        if (head == NULL) {
+            head = temp;
+            tail = temp;
+            size++;
+        }
+        else {
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp;
+            size++;
+        }
+    }
+
 };

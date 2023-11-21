@@ -38,6 +38,8 @@ int main() {
     dll.insertLast("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
 
     bool isRunning = true;  // Boolean variable to control the loop
+    string name, model, serial;
+    bool isLent;
     while (isRunning) {
         int Opt;
         string selectedCategory = "NULL";
@@ -50,7 +52,7 @@ int main() {
         cout << "4. See all the equipment (sorted) " << endl;
         cout << "5. Delete an Equipment " << endl;
         cout << "6. Search Equipment " << endl;
-        cout << "7. Sample Data Display " << endl;
+        cout << "7. Print all the equipments " << endl;
         cout << "8. Exit " << endl;
         cout << "_____________________________________________________________" << endl;
         cin >> Opt;
@@ -67,12 +69,23 @@ int main() {
             cout << "____________________________________" << endl;
             cout << "Please enter a category from above list" << endl;
             cin >> selectedCategory;
-            cout << "Here are all the equipment in the category you selected" << endl;
-            dll.filterByCategory(selectedCategory);
+            // Add equipment to the selected category
+            cout << "Enter equipment name: ";
+            cin >> name;
+            cout << "Enter equipment model: ";
+            cin >> model;
+            cout << "Enter equipment serial: ";
+            cin >> serial;
+            cout << "Enter availability (1 for true, 0 for false): ";
+            cin >> isLent;
+
+            dll.addEquipmentToCategory(selectedCategory, name, model, serial, isLent);
+
+            cout << "Equipment added successfully to category: " << selectedCategory << endl;
             break;
         case 7:
-            cout << "Sample data display option selected" << endl;
-            
+            cout << "Print all the equipments option selected" << endl;
+            dll.print();
             break;
         case 8:
             isRunning = false;  // Set the boolean variable to false to exit the loop
