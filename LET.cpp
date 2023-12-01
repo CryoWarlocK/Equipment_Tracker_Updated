@@ -1,8 +1,9 @@
 #include <iostream>
+#include <cstdlib>
 #include "Equipment.h"
 
-//test comment 3
-
+//test comment 4
+using namespace std;
 
 void runProgram() {
  
