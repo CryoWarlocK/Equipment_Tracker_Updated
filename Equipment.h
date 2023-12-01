@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include <cstdlib>
+
 
 using namespace std;
 //Node in our code
@@ -55,20 +58,7 @@ public:
         return tail;
     }
 
-    void insertFirst(std::string N, std::string cat, std::string mod, std::string Snum, bool lent) {
-        LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent);
-        if (head == nullptr) {
-            head = temp;
-            tail = temp;
-            size++;
-        }
-        else {
-            temp->next = head;
-            head->prev = temp;
-            head = temp;
-            size++;
-        }
-    }
+   
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
         //Create the node
         LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent);
