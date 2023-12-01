@@ -8,7 +8,7 @@ using namespace std;
 
 // ANSI escape codes for text color
 const char* RED_COLOR = "\033[1;31m";
-const char* GREEN_COLOR = "\033[1;32m";
+const char* GREEN_COLOR = "\033[1;36m";
 const char* RESET_COLOR = "\033[0m";
 
 void runProgram() {
@@ -48,7 +48,7 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
-        cout << RED_COLOR<< "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
+        cout << GREEN_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
         cout << "1.1. Return Equipment" << endl;
@@ -137,3 +137,7 @@ int main() {
     return 0;
 }
 
+
+//find the time complexities
+//implement a seacrh method by serial number
+//implement a print method for one by one printing.
