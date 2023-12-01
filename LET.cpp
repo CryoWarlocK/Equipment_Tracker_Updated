@@ -60,6 +60,7 @@ int main() {
         switch (Opt) {
         case 1:     //for lend equipments
             cout << "Lend Equipment option selected" << endl;
+           
             break;
         case 2:
             cout << "Add Equipment option selected" << endl;
