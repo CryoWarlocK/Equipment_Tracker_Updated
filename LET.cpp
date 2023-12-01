@@ -48,7 +48,7 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
-        cout << RED_COLOR<< "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
+        cout << GREEN_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
         cout << "1.1. Return Equipment" << endl;
