@@ -41,8 +41,8 @@ int main() {
     while (isRunning) {
         int Opt;
         int selectedCategory = -1;
-        cout << "                                                            " << endl;
-        cout << "_____________Lab Equipment Tracker Version 1.0______________" << endl;
+        cout << "_____________________________________________________________" << endl;
+        cout << "------------ Lab Equipment Tracker Version 1.0 --------------" << endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
         cout << "2. Add Equipment " << endl;
@@ -85,6 +85,10 @@ int main() {
             dll.addEquipmentToCategory(selectedCategory, name, model, serial, isLent);
 
             cout << "Equipment added successfully to category: " << selectedCategory << endl;
+            break;
+        case 3:
+            // Print all unique categories with numbers or letters
+            dll.printUniqueCategories();
             break;
         case 7:
             cout << "Print all the equipments option selected" << endl;

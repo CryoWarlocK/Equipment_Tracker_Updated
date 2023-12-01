@@ -84,20 +84,29 @@ public:
             size++;
         }
     }
-
+    /*
+    void availability() {
+        if (current->isLent == 1)
+            cout << "Available" << endl;
+        else
+            cout << "Not Available" << endl;
+    }
+    */
 
     void print() {
+        
 
 
         LabEquipment* current;
         current = head;
         while (current != NULL)
         {
+            
             cout << "Name          : " << current->name << endl;
             cout << "Category      : " << current->category << endl;
             cout << "Model         : " << current->model << endl;
             cout << "Serial Number : " << current->serial << endl;
-            cout << "Availability  : " << current->isLent << endl;
+            cout << "Availability  : " << (current->isLent ? "Available" : "Not Available")<< endl;
             cout << endl;
             cout << endl;
             current = current->next;
