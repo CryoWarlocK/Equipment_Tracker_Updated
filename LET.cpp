@@ -1,43 +1,8 @@
 #include <iostream>
 #include "Equipment.h"
 
-void EquipmentList::print() {
-    LabEquipment* current = head;
-    while (current != nullptr) {
-        std::cout << "Name          : " << current->name << std::endl;
-        std::cout << "Category      : " << current->category << std::endl;
-        std::cout << "Model         : " << current->model << std::endl;
-        std::cout << "Serial Number : " << current->serial << std::endl;
-        std::cout << "Availability  : " << current->isLent << std::endl;
-        std::cout << std::endl;
-        std::cout << std::endl;
-        current = current->next;
-    }
-    std::cout << std::endl;
-}
+//test comment 2
 
-void EquipmentList::filterByCategory(const std::string& category) {
-    LabEquipment* current = head;
-    while (current != nullptr) {
-        if (current->category == category) {
-            std::cout << "Name          : " << current->name << std::endl;
-            std::cout << "Category      : " << current->category << std::endl;
-            std::cout << "Model         : " << current->model << std::endl;
-            std::cout << "Serial Number : " << current->serial << std::endl;
-            std::cout << "Availability  : " << current->isLent << std::endl;
-            std::cout << std::endl;
-            std::cout << std::endl;
-        }
-        current = current->next;
-    }
-    std::cout << std::endl;
-}
-
-void dummyData() {
-    EquipmentList dll;
-    // insertFirst calls...
-    dll.print();
-}
 
 void runProgram() {
  
