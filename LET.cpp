@@ -41,6 +41,7 @@ int main() {
     while (isRunning) {
         int Opt;
         string selectedCategory = "NULL";
+        char categoryLetters[26];  // Assuming a maximum of 26 categories
         cout << "                                                            " << endl;
         cout << "_____________Lab Equipment Tracker Version 1.0______________" << endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
@@ -63,10 +64,18 @@ int main() {
             cout << "Add Equipment option selected" << endl;
             cout << "_______________________________" << endl;
             cout << "Please select a category from below list to add a equipment" << endl;
-            dll.printUniqueCategories();
+
+            // Print all unique categories with numbers or letters
+            dll.printUniqueCategories(categoryLetters);
             cout << "____________________________________" << endl;
-            cout << "Please enter a category from above list" << endl;
-            cin >> selectedCategory;
+            //cout << "Please enter a category from above list" << endl;
+            cout << "Please select a category by entering its corresponding number or letter" << endl;
+            char categoryChoice;
+            cin >> categoryChoice;
+
+            // Convert the user's choice to the selected category
+            selectedCategory = string(1, categoryLetters[categoryChoice - 'A']);
+
             // Add equipment to the selected category
             cout << "Enter equipment name: ";
             cin >> name;
@@ -91,6 +100,7 @@ int main() {
 
         default:
             cout << "Please enter a valid option key" << endl;
+            isRunning = false;
             break;
         }
 

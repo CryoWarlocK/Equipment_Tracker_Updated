@@ -4,10 +4,10 @@ using namespace std;
 //Node in our code
 class LabEquipment {
 public:
-    std::string name;
-    std::string category;
-    std::string model;
-    std::string serial;
+    string name;
+    string category;
+    string model;
+    string serial;
     bool isLent;
     LabEquipment* next;
     LabEquipment* prev;
@@ -148,7 +148,40 @@ public:
         cout << endl;
     }
 
-    void addEquipmentToCategory(const string& category, const string& name, const string& model, const string& serial, bool isLent) {
+    // Method to print all unique categories with numbers or letters
+    void printUniqueCategories(char categoryLetters[]) {
+        LabEquipment* current = head;
+        LabEquipment* temp;
+        char categoryLetter = 'A';
+
+        while (current != NULL) {
+            temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                cout << categoryLetter << ". " << current->category << endl;
+                categoryLetters[categoryLetter - 'A'] = categoryLetter;
+                categoryLetter++;
+            }
+
+            current = current->next;
+        }
+
+        cout << endl;
+    }
+
+
+
+    // Method to add equipment to a specific category
+    void addEquipmentToCategory(const string& category, const string& name, const string& model, const string& serial, bool isLent){
         // Create the equipment
         LabEquipment* temp = new LabEquipment(name, category, model, serial, isLent);
 
@@ -164,6 +197,9 @@ public:
             size++;
         }
     }
+
+    
+    
 
     
 };
