@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "Equipment.h"
+#include<string>
 
 //test comment 4
 using namespace std;
@@ -36,7 +37,7 @@ int main() {
     dll.insertLast("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
 
     bool isRunning = true;  // Boolean variable to control the loop
-    string name, model, serial;
+    string name, model, serial, equipmentToDelete;
     bool isLent;
     while (isRunning) {
         int Opt;
@@ -95,6 +96,16 @@ int main() {
             // Print all unique categories with numbers or letters
             dll.printUniqueCategories();
             break;
+        case 5:
+            cout << "Delete an Equipment option selected" << endl;
+            cout << "Enter the name of the equipment you want to delete: ";
+            cin.ignore(); // Ignore any previous newline character in the input buffer
+            getline(cin, equipmentToDelete);
+
+            // Delete the equipment by name
+            dll.deleteEquipmentByName(equipmentToDelete);
+            break;
+
         case 7:
             cout << "Print all the equipments option selected" << endl;
             dll.print();

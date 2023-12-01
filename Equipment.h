@@ -213,4 +213,37 @@ public:
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
     }
+
+    //Method to delete equipment by name
+    void deleteEquipmentByName(const string& equipmentName) {
+        LabEquipment* current = head;
+
+        while (current != nullptr) {
+            // Print names of equipment while traversing (for debugging)
+            cout << "Equipment Name: " << current->name << endl;
+
+            if (current->name == equipmentName) {
+                if (current == head) {
+                    head = current->next;
+                    if (head != nullptr) {
+                        head->prev = nullptr;
+                    }
+                }
+                else {
+                    current->prev->next = current->next;
+                    if (current->next != nullptr) {
+                        current->next->prev = current->prev;
+                    }
+                }
+
+                delete current;
+                cout << "Equipment '" << equipmentName << "' deleted successfully." << endl;
+                return;
+            }
+            current = current->next;
+        }
+
+        cout << "Equipment '" << equipmentName << "' not found." << endl;
+    }
+
 };
