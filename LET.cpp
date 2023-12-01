@@ -42,7 +42,7 @@ int main() {
     dll.insertLast("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
 
     bool isRunning = true;  // Boolean variable to control the loop
-    string name, model, serial, equipmentToDelete;
+    string name, model, serial, equipmentToDelete, searchSerial;
     bool isLent;
     while (isRunning) {
         int Opt;
@@ -114,6 +114,14 @@ int main() {
 
             // Delete the equipment by name
             dll.deleteEquipmentByName(equipmentToDelete);
+            break;
+        case 6:
+            system("cls");
+            cout << "Enter serial number to search: ";
+            
+            cin >> searchSerial;
+
+            dll.searchBySerial(searchSerial);
             break;
 
         case 7:

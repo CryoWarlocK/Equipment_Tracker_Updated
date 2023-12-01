@@ -238,6 +238,36 @@ public:
         cout << "Equipment '" << equipmentName << "' not found." << endl;
     }
 
+    // Method to search for an equipment by serial number
+    void searchBySerial(const string& serialNumber) {
+        LabEquipment* current = head;
+        bool found = false;
+
+        // Traverse the list to find the equipment by serial number
+        while (current != nullptr) {
+            if (current->serial == serialNumber) {
+                // Found the equipment, display details
+                cout << "----------------------------" << endl;
+                cout << "--- Details of Equipment ---" << endl;
+                cout << "----------------------------" << endl << endl;
+                cout << "Name        : " << current->name << endl;
+                cout << "Category    : " << current->category << endl;
+                cout << "Model       : " << current->model << endl;
+                cout << "Avalability : "  << (current->isLent ? "Available" : "Not Available") << endl << endl;
+
+                found = true;
+                break;
+            }
+            current = current->next;
+        }
+
+        // Equipment with the specified serial number not found
+        if (!found) {
+            cout << "Equipment with the specified serial number not found." << endl;
+        }
+    }
+
+
 
 
 };
