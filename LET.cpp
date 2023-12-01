@@ -86,6 +86,10 @@ int main() {
 
             cout << "Equipment added successfully to category: " << selectedCategory << endl;
             break;
+        case 3:
+            // Print all unique categories with numbers or letters
+            dll.printUniqueCategories();
+            break;
         case 7:
             cout << "Print all the equipments option selected" << endl;
             dll.print();
