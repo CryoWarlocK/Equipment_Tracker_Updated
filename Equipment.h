@@ -86,9 +86,6 @@ public:
     */
 
     void print() {
-        
-
-
         LabEquipment* current;
         current = head;
         while (current != NULL)
