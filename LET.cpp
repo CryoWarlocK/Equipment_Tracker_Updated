@@ -41,8 +41,8 @@ int main() {
     while (isRunning) {
         int Opt;
         int selectedCategory = -1;
-        cout << "                                                            " << endl;
-        cout << "_____________Lab Equipment Tracker Version 1.0______________" << endl;
+        cout << "_____________________________________________________________" << endl;
+        cout << "------------ Lab Equipment Tracker Version 1.0 --------------" << endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
         cout << "2. Add Equipment " << endl;
