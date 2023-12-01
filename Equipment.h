@@ -165,5 +165,5 @@ public:
         }
     }
 
-    void filterByCategory(const std::string& category);
+    
 };
