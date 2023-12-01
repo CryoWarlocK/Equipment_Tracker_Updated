@@ -123,36 +123,10 @@ public:
         cout << endl;
     }
 
-    // Method to traverse the list and print all unique categories
     void printUniqueCategories() {
         LabEquipment* current = head;
         LabEquipment* temp;
-        while (current != NULL) {
-            temp = head;
-            bool isUnique = true;
-            while (temp != current) {
-                if (temp->category == current->category) {
-                    isUnique = false;
-                    break;
-                }
-                temp = temp->next;
-            }
-
-            if (isUnique) {
-                cout << current->category << endl;
-            }
-
-            current = current->next;
-        }
-
-        cout << endl;
-    }
-
-    // Method to print all unique categories with numbers or letters
-    void printUniqueCategories(char categoryLetters[]) {
-        LabEquipment* current = head;
-        LabEquipment* temp;
-        char categoryLetter = 'A';
+        int categoryNumber = 1;
 
         while (current != NULL) {
             temp = head;
@@ -167,9 +141,8 @@ public:
             }
 
             if (isUnique) {
-                cout << categoryLetter << ". " << current->category << endl;
-                categoryLetters[categoryLetter - 'A'] = categoryLetter;
-                categoryLetter++;
+                cout << categoryNumber << ". " << current->category << endl;
+                categoryNumber++;
             }
 
             current = current->next;
@@ -181,25 +154,54 @@ public:
 
 
     // Method to add equipment to a specific category
-    void addEquipmentToCategory(const string& category, const string& name, const string& model, const string& serial, bool isLent){
-        // Create the equipment
-        LabEquipment* temp = new LabEquipment(name, category, model, serial, isLent);
+    void addEquipmentToCategory(int categoryNumber, const string& name, const string& model, const string& serial, bool isLent) {
+        LabEquipment* current = head;
+        int currentCategoryNumber = 1;
 
-        if (head == NULL) {
-            head = temp;
-            tail = temp;
-            size++;
+        // Find the category corresponding to the selected category number
+        while (current != NULL) {
+            LabEquipment* temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                if (currentCategoryNumber == categoryNumber) {
+                    // Add equipment to the found category
+                    LabEquipment* newEquipment = new LabEquipment(name, current->category, model, serial, isLent);
+
+                    if (current->next == NULL) {
+                        // The category is the last one in the list
+                        current->next = newEquipment;
+                        newEquipment->prev = current;
+                        tail = newEquipment;
+                    }
+                    else {
+                        // Insert the new equipment between two categories
+                        newEquipment->next = current->next;
+                        newEquipment->prev = current;
+                        current->next->prev = newEquipment;
+                        current->next = newEquipment;
+                    }
+
+                    size++;
+                    cout << "Equipment added successfully to category: " << current->category << endl;
+                    return;
+                }
+
+                currentCategoryNumber++;
+            }
+
+            current = current->next;
         }
-        else {
-            tail->next = temp;
-            temp->prev = tail;
-            tail = temp;
-            size++;
-        }
+
+        // If the category is not found
+        cout << "Invalid category number. Equipment not added." << endl;
     }
-
-    
-    
-
-    
 };
