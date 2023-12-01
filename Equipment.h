@@ -9,6 +9,7 @@ public:
     string model;
     string serial;
     bool isLent;
+    string* student = new string[3];
     LabEquipment* next;
     LabEquipment* prev;
 

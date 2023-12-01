@@ -6,6 +6,11 @@
 //test comment 4
 using namespace std;
 
+// ANSI escape codes for text color
+const char* RED_COLOR = "\033[1;31m";
+const char* GREEN_COLOR = "\033[1;32m";
+const char* RESET_COLOR = "\033[0m";
+
 void runProgram() {
  
     
@@ -43,9 +48,10 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
-        cout << "------------ Lab Equipment Tracker Version 1.0 --------------" << endl;
+        cout << RED_COLOR<< "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
+        cout << "1.1. Return Equipment" << endl;
         cout << "2. Add Equipment " << endl;
         cout << "3. See all Categories " << endl;
         cout << "4. See all the equipment (sorted) " << endl;
@@ -61,6 +67,7 @@ int main() {
             cout << "Lend Equipment option selected" << endl;
             break;
         case 2:
+            system("cls");
             cout << "Add Equipment option selected" << endl;
             cout << "_______________________________" << endl;
             cout << "Please select a category from below list to add a equipment" << endl;
