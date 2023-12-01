@@ -1,10 +1,7 @@
 #include <iostream>
-#include <cstdlib>
 #include "Equipment.h"
 
-
 //test comment 2
-
 
 
 void runProgram() {

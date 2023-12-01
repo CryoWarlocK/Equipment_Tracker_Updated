@@ -1,44 +1,38 @@
 #pragma once
-#include <cstddef>
-#include <iostream>
 
 using namespace std;
 //Node in our code
 class LabEquipment {
 public:
-    string name;        //equipment name
-    string category;    //equipment catagory
-    string model;       //equipment model
-    string serial;      // whether equipment is lend to student or not
+    std::string name;
+    std::string category;
+    std::string model;
+    std::string serial;
     bool isLent;
-    LabEquipment* next; // pointer to next node
-    LabEquipment* prev; // Pointer to the previous node
+    LabEquipment* next;
+    LabEquipment* prev;
 
-
-    //overide the default constructor
     LabEquipment() {
         name = "";
         category = "";
         model = "";
         serial = "";
         isLent = false;
-        next = NULL;
-        prev = NULL;
+        next = nullptr;
+        prev = nullptr;
     }
 
-    //overloaded default constructor
-    LabEquipment(string N, string cat, string mod, string Snum, bool lent) {
+    LabEquipment(std::string N, std::string cat, std::string mod, std::string Snum, bool lent) {
         name = N;
         category = cat;
         model = mod;
         serial = Snum;
         isLent = lent;
-        next = NULL;
-        prev = NULL;
+        next = nullptr;
+        prev = nullptr;
     }
 };
 
-//A doubly linked list
 class EquipmentList {
 private:
     LabEquipment* head;
@@ -46,10 +40,9 @@ private:
     int size;
 
 public:
-    //default constructor
     EquipmentList() {
-        head = NULL;
-        tail = NULL;
+        head = nullptr;
+        tail = nullptr;
         size = 0;
     }
 
@@ -61,17 +54,16 @@ public:
         return tail;
     }
 
-    void insertFirst(string N, string cat, string mod, string Snum, bool lent) {
-        //create the equipment
+    void insertFirst(std::string N, std::string cat, std::string mod, std::string Snum, bool lent) {
         LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent);
-        if (head == NULL) { //empty list
+        if (head == nullptr) {
             head = temp;
             tail = temp;
             size++;
         }
-        else { //non empty list
-            temp->next = head; //arrow (->) is used with pointers | dot (.) is used with objects
-            head->prev = temp; //*************
+        else {
+            temp->next = head;
+            head->prev = temp;
             head = temp;
             size++;
         }
@@ -173,4 +165,5 @@ public:
         }
     }
 
+    void filterByCategory(const std::string& category);
 };
