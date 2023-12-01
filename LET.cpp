@@ -64,6 +64,7 @@ int main() {
 
         switch (Opt) {
         case 1:     //for lend equipments
+            system("cls");
             cout << "Lend Equipment option selected" << endl;
             break;
         case 2:
@@ -100,10 +101,12 @@ int main() {
             cout << "Equipment added successfully to category: " << selectedCategory << endl;
             break;
         case 3:
+            system("cls");
             // Print all unique categories with numbers or letters
             dll.printUniqueCategories();
             break;
         case 5:
+            system("cls");
             cout << "Delete an Equipment option selected" << endl;
             cout << "Enter the name of the equipment you want to delete: ";
             cin.ignore(); // Ignore any previous newline character in the input buffer
@@ -114,10 +117,12 @@ int main() {
             break;
 
         case 7:
+            system("cls");
             cout << "Print all the equipments option selected" << endl;
             dll.print();
             break;
         case 8:
+            system("cls");
             isRunning = false;  // Set the boolean variable to false to exit the loop
             break;
 
