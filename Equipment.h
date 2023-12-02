@@ -364,7 +364,19 @@ public:
 
 
     // Method to add equipment to a specific category
-    void addEquipmentToCategory(int categoryNumber, const string& name, const string& model, const string& serial, bool isLent) {
+    void addEquipmentToCategory(int categoryNumber) {
+        string name, model, serial;
+        bool isLent;
+
+        cout << "Enter equipment name: ";
+        cin >> name;
+        cout << "Enter equipment model: ";
+        cin >> model;
+        cout << "Enter equipment serial: ";
+        cin >> serial;
+        cout << "Enter availability (1 for true, 0 for false): ";
+        cin >> isLent;
+
         LabEquipment* current = head;
         int currentCategoryNumber = 1;
 
