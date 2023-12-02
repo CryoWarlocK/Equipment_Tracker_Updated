@@ -75,24 +75,7 @@ int main() {
             //cout << "Please enter a category from above list" << endl;
             cout << "Please select a category by entering its corresponding number" << endl;
             cin >> selectedCategory;
-            fflush(stdin);
-
-            
-            // Add equipment to the selected category
-            cout << "Enter equipment name: ";
-            cin >> name;
-            fflush(stdin);
-            cout << "Enter equipment model: ";
-            cin >> model;
-            fflush(stdin);
-            cout << "Enter equipment serial: ";
-            cin >> serial;
-            fflush(stdin);
-            cout << "Enter availability (1 for true, 0 for false): ";
-            cin >> isLent;
-            fflush(stdin);
-
-            dll.addEquipmentToCategory(selectedCategory, name, model, serial, isLent);
+            dll.addEquipmentToCategory(selectedCategory);
 
             cout << "Equipment added successfully to category: " << selectedCategory << endl;
             break;
