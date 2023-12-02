@@ -20,30 +20,6 @@ void runProgram() {
 
 int main() {
     EquipmentList dll;
-    /*
-    dll.insertLast("Oscilloscope", "Measurement", "Tektronix TDS210", "OS-12345", true);
-    dll.insertLast("Function Generator", "Signal Generator", "Agilent 33500B", "FG-67890", false);
-    dll.insertLast("Multimeter", "Measurement", "Fluke 87V", "MM-24680", true);
-    dll.insertLast("Power Supply", "Power", "Agilent E3631A", "PS-13579", false);
-    dll.insertLast("Spectrum Analyzer", "Signal Analyzer", "Rohde & Schwarz FSW", "SA-54321", true);
-    dll.insertLast("Digital Logic Analyzer", "Measurement", "Keysight MSO-X 3034T", "DL-98765", false);
-    dll.insertLast("Signal Generator", "Signal Generator", "Keysight 33522A", "SG-11223", true);
-    dll.insertLast("Function Generator", "Signal Generator", "Rigol DG1022Z", "FG-45678", false);
-    dll.insertLast("Digital Oscilloscope", "Measurement", "Tektronix MSO2014B", "OS-13579", true);
-    dll.insertLast("Voltage Regulator", "Power", "LM317", "VR-98765", false);
-    dll.insertLast("Signal Generator", "Signal Generator", "B&K Precision 4040A", "SG-24680", true);
-    dll.insertLast("Logic Probe", "Measurement", "HP 1043A", "LP-11223", false);
-    dll.insertLast("Power Supply", "Power", "Agilent E3646A", "PS-54321", true);
-    dll.insertLast("Waveform Generator", "Signal Generator", "Teledyne LeCroy ArbStudio 1102", "WG-13579", false);
-    dll.insertLast("Frequency Counter", "Measurement", "Fluke 725", "FC-98765", true);
-    dll.insertLast("DC Motor", "Motors", "NEMA 23", "DM-11223", false);
-    dll.insertLast("Soldering Station", "Tools", "Hakko FX-888D", "SS-24680", true);
-    dll.insertLast("Logic Analyzer", "Measurement", "Agilent 16802A", "LA-13579", false);
-    dll.insertLast("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
-    dll.insertLast("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
-    */
-    //dll.insertLast("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
-    //dll.insertLastWS("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false,"Janitha","EG/2021/4599", "2/12/2023");
     bool isRunning = true;  // Boolean variable to control the loop
     string name, model, serial, equipmentToDelete, serialNumber;
     bool isLent;
