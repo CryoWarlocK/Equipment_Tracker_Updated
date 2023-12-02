@@ -294,6 +294,73 @@ public:
         cout << endl;
     }
 
+    void lendEquipment() {
+        string serialNum;
+        cout << "Enter the serial number of the equipment you want to lend: ";
+        cin >> serialNum;
+
+        LabEquipment* current = head;
+        bool found = false;
+
+        // Traverse the list to find the equipment by serial number
+        while (current != nullptr) {
+            if (current->serial == serialNum) {
+                // Found the equipment
+                cout << "----------------------------" << endl;
+                cout << "--- Details of Equipment ---" << endl;
+                cout << "----------------------------" << endl << endl;
+                cout << "Name        : " << current->name << endl;
+                cout << "Category    : " << current->category << endl;
+                cout << "Model       : " << current->model << endl;
+                cout << "Availability: " << (current->isLent ? "Not Available" : "Available") << endl << endl;
+
+                if (current->isLent) {
+                    cout << "Details of the student who has the equipment" << endl;
+                    cout << "Student Name               : " << current->studentName << endl;
+                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
+                    cout << "Date of the record         : " << current->lendDate << endl << endl;
+                }
+
+                if (!current->isLent) {
+                    // Equipment is available, ask for confirmation to lend
+                    char confirm;
+                    cout << "Do you want to borrow this equipment? (Yes -y/No -n): ";
+                    cin >> confirm;
+
+                    if (confirm == 'y' || confirm == 'Y') {
+                        // Get student details
+                        string studentName, registerNumber, lendDate;
+                        cout << "Enter Student name: ";
+                        cin >> studentName;
+                        cout << "Enter Student's register number: ";
+                        cin >> registerNumber;
+                        cout << "Enter the lending date (YYYY-MM-DD): ";
+                        cin >> lendDate;
+
+                        // Update equipment status and add student details
+                        current->isLent = true;
+                        current->studentName = studentName;
+                        current->studentRegisterNumber = registerNumber;
+                        current->lendDate = lendDate;
+
+                        cout << "Equipment borrowed successfully." << endl;
+                    }
+                    else {
+                        cout << "Borrowing canceled." << endl;
+                    }
+                }
+
+                found = true;
+                break;
+            }
+            current = current->next;
+        }
+
+        // Equipment with the specified serial number not found
+        if (!found) {
+            cout << "Equipment with the specified serial number not found." << endl;
+        }
+    }
 
 
     // Method to add equipment to a specific category

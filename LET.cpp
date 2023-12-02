@@ -8,7 +8,7 @@ using namespace std;
 
 // ANSI escape codes for text color
 const char* RED_COLOR = "\033[1;31m";
-const char* GREEN_COLOR = "\033[1;36m";
+const char* LIGHTBLUE_COLOR = "\033[1;36m";
 const char* RESET_COLOR = "\033[0m";
 
 void runProgram() {
@@ -49,16 +49,17 @@ int main() {
     bool isLent;
     string filename = "equipment_data.csv";
     while (isRunning) {
+        system("cls");
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
-        cout << GREEN_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
+        cout << LIGHTBLUE_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
         cout << "2. Return Equipment" << endl;
         cout << "3. Add Equipment " << endl;
         cout << "4. See all Categories " << endl;
-        cout << "5. See all the equipment (sorted) " << endl;
+        cout << "5. " << endl;
         cout << "6. Delete an Equipment " << endl;
         cout << "7. Search Equipment " << endl;
         cout << "8. Print all the equipments " << endl;
@@ -73,6 +74,8 @@ int main() {
         case 1:     //for lend equipments
             system("cls");
             cout << "Lend Equipment option selected" << endl;
+            cout << "................................................." << endl;
+            dll.lendEquipment();
             break;
 
         case 2:
