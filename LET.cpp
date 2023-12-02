@@ -25,7 +25,7 @@ int main() {
     bool isLent;
     string filename = "equipment_data.csv";
     while (isRunning) {
-        system("cls");
+        //system("cls");
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
