@@ -362,6 +362,45 @@ public:
         }
     }
 
+    void addEquipment() {
+        string name, model, category, serial;
+        bool isLent;
+
+        cout << "Enter equipment name: ";
+        cin >> name;
+
+        cout << "Enter equipment model: ";
+        cin >> model;
+
+        cout << "Enter equipment category: ";
+        cin >> category;
+
+        cout << "Enter equipment serial number: ";
+        cin >> serial;
+
+        cout << "Enter availability (1 for true, 0 for false): ";
+        cin >> isLent;
+
+        if (isLent) {
+            string studentName, registerNumber, lendDate;
+
+            cout << "Enter student name: ";
+            cin >> studentName;
+
+            cout << "Enter student register number: ";
+            cin >> registerNumber;
+
+            cout << "Enter lend date: ";
+            cin >> lendDate;
+
+            insertLastWS(name, category, model, serial, isLent, studentName, registerNumber, lendDate);
+        }
+        else {
+            insertLast(name, category, model, serial, isLent);
+        }
+
+        cout << "Equipment added successfully." << endl;
+    }
 
     // Method to add equipment to a specific category
     void addEquipmentToCategory(int categoryNumber) {

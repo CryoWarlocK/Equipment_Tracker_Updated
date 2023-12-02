@@ -29,21 +29,22 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
-        cout << LIGHTBLUE_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
-        cout << "Please enter a menu number corresponding to your need." << endl;
+        cout <<  RED_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
+        cout << LIGHTBLUE_COLOR << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
         cout << "2. Return Equipment" << endl;
-        cout << "3. Add Equipment " << endl;
+        cout << "3. Add Equipment by selecting existing category " << endl;
         cout << "4. See all Categories " << endl;
-        cout << "5. " << endl;
+        cout << "5. Add Equipment with category" << endl;
         cout << "6. Delete an Equipment " << endl;
         cout << "7. Search Equipment " << endl;
         cout << "8. Print all the equipments " << endl;
         cout << "9. Save data locally" << endl;
         cout << "10. Load data from local machine" << endl;
-        cout << "11. Exit " << endl;
+        cout << "11. Exit " << RESET_COLOR << endl;
         
         cout << "_____________________________________________________________" << endl;
+        cout << "Enter the number corresponding to your instruction : ";
         cin >> Opt;
 
         switch (Opt) {
@@ -85,7 +86,12 @@ int main() {
             dll.printUniqueCategories();
             break;
         case 5:
-            
+            system("cls");
+            cout << "Add Equipment with category option is selected" << endl;
+            cout << "______________________________________________" << endl;
+            dll.addEquipment();
+            break;
+
         case 6:
             system("cls");
             cout << "Delete an Equipment option selected" << endl << endl;
