@@ -49,6 +49,7 @@ int main() {
     bool isLent;
     string filename = "equipment_data.csv";
     while (isRunning) {
+        system("cls");
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
@@ -58,7 +59,7 @@ int main() {
         cout << "2. Return Equipment" << endl;
         cout << "3. Add Equipment " << endl;
         cout << "4. See all Categories " << endl;
-        cout << "5. See all the equipment (sorted) " << endl;
+        cout << "5. " << endl;
         cout << "6. Delete an Equipment " << endl;
         cout << "7. Search Equipment " << endl;
         cout << "8. Print all the equipments " << endl;
@@ -73,6 +74,8 @@ int main() {
         case 1:     //for lend equipments
             system("cls");
             cout << "Lend Equipment option selected" << endl;
+            cout << "................................................." << endl;
+            dll.lendEquipment();
             break;
 
         case 2:
