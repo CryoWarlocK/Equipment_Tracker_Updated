@@ -1,4 +1,6 @@
 #pragma once
+#include <fstream>
+#include <sstream>
 #include <iostream>
 #include <cstdlib>
 
@@ -12,7 +14,10 @@ public:
     string model;
     string serial;
     bool isLent;
-    string* student = new string[3];
+    string studentName;
+    string studentRegisterNumber;
+    string lendDate;
+   // string* student = new string[3];
     LabEquipment* next;
     LabEquipment* prev;
 
@@ -22,16 +27,35 @@ public:
         model = "";
         serial = "";
         isLent = false;
+        studentName = "-1";
+        studentRegisterNumber = "-1";
+        lendDate = "-1";
         next = nullptr;
         prev = nullptr;
     }
 
-    LabEquipment(std::string N, std::string cat, std::string mod, std::string Snum, bool lent) {
+    LabEquipment(string N, string cat, string mod, string Snum, bool lent) {
         name = N;
         category = cat;
         model = mod;
         serial = Snum;
         isLent = lent;
+        studentName = "-1";
+        studentRegisterNumber = "-1";
+        lendDate = "-1";
+        next = nullptr;
+        prev = nullptr;
+    }
+
+    LabEquipment(string N, string cat, string mod, string Snum, bool lent, string sName, string sRegNum, string lDate) {
+        name = N;
+        category = cat;
+        model = mod;
+        serial = Snum;
+        isLent = lent;
+        studentName = sName;
+        studentRegisterNumber = sRegNum;
+        lendDate = lDate;
         next = nullptr;
         prev = nullptr;
     }
@@ -42,6 +66,16 @@ private:
     LabEquipment* head;
     LabEquipment* tail;
     int size;
+
+
+    // Helper function to write a LabEquipment object to a CSV file
+    void writeEquipmentToCSV(ofstream& file, const LabEquipment* equipment) {
+        file << equipment->name << "," << equipment->category << ","
+            << equipment->model << "," << equipment->serial << ","
+            << equipment->isLent << "," << equipment->studentName << ","
+            << equipment->studentRegisterNumber << "," << equipment->lendDate << "\n";
+    }
+
 
 public:
     EquipmentList() {
@@ -59,6 +93,98 @@ public:
     }
 
 // test comment
+
+    // Method to save equipment data to a CSV file
+    void saveToCSV(const string& filename) {
+        ofstream file(filename);
+        if (!file.is_open()) {
+            cout << "Error: Unable to open file for writing." << endl;
+            return;
+        }
+
+        LabEquipment* current = head;
+
+        while (current != nullptr) {
+            writeEquipmentToCSV(file, current);
+            current = current->next;
+        }
+
+        file.close();
+        cout << "Equipment data saved to '" << filename << "' successfully." << endl;
+    }
+
+    // Insert equipment details into the list
+    void insertLastWS(
+        const string& N, const string& cat, const string& mod, const string& Snum,
+        bool lent, const string& studentName, const string& registerNumber, const string& lendDate
+    ) {
+        // Create the node
+        LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent, studentName, registerNumber, lendDate);
+
+        if (head == NULL) {
+            head = temp;
+            tail = temp;
+            size++;
+        }
+        else {
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp;
+            size++;
+        }
+    }
+
+    // Load equipment data from a CSV file
+    void loadFromCSV(const string& filename) {
+        // Clear the existing list
+        clearList();
+
+        ifstream file(filename);
+        if (!file.is_open()) {
+            cout << "Error opening file: " << filename << endl;
+            return;
+        }
+
+        string line;
+        while (getline(file, line)) {
+            istringstream ss(line);
+            string token;
+
+            // Parse the line using commas
+            string data[8];  // Assuming there are 8 fields in your CSV data
+            int index = 0;
+            while (getline(ss, token, ',')) {
+                data[index++] = token;
+                if (index >= 8) {
+                    break;  // Assuming there are 8 fields in your CSV data
+                }
+            }
+
+            // Create a LabEquipment object from the CSV data
+            if (index >= 8) {
+                insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], data[7]);
+            }
+        }
+
+        file.close();
+    }
+
+    void clearList() {
+        LabEquipment* current = head;
+        LabEquipment* next;
+
+        while (current != nullptr) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+
+        head = nullptr;
+        tail = nullptr;
+        size = 0;
+    }
+
+    
    
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
         //Create the node
@@ -95,7 +221,7 @@ public:
             cout << "Category      : " << current->category << endl;
             cout << "Model         : " << current->model << endl;
             cout << "Serial Number : " << current->serial << endl;
-            cout << "Availability  : " << (current->isLent ? "Available" : "Not Available")<< endl;
+            cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
             cout << endl;
             cout << endl;
             current = current->next;
@@ -119,6 +245,25 @@ public:
             current = current->next;
         }
         cout << endl;
+    }
+
+    void lendEquipment(const string& Snum, const string& studentName, const string& registerNumber, const string& lendDate) {
+        LabEquipment* current = head;
+
+        while (current != nullptr) {
+            if (current->serial == Snum) {
+                // Update equipment status and add student details
+                current->isLent = true;
+                current->studentName = studentName;
+                current->studentRegisterNumber = registerNumber;
+                current->lendDate = lendDate;
+                return;
+            }
+            current = current->next;
+        }
+
+        // Equipment with the specified serial number not found
+        cout << "Equipment with the specified serial number not found." << endl;
     }
 
     void printUniqueCategories() {
@@ -203,37 +348,103 @@ public:
         cout << "Invalid category number. Equipment not added." << endl;
     }
 
-    //Method to delete equipment by name
-    void deleteEquipmentByName(const string& equipmentName) {
-        LabEquipment* current = head;
+  
 
-        while (current != nullptr) {
-            // Print names of equipment while traversing (for debugging)
-            cout << "Equipment Name: " << current->name << endl;
-
-            if (current->name == equipmentName) {
-                if (current == head) {
-                    head = current->next;
-                    if (head != nullptr) {
-                        head->prev = nullptr;
-                    }
-                }
-                else {
-                    current->prev->next = current->next;
-                    if (current->next != nullptr) {
-                        current->next->prev = current->prev;
-                    }
-                }
-
-                delete current;
-                cout << "Equipment '" << equipmentName << "' deleted successfully." << endl;
-                return;
-            }
-            current = current->next;
+    void deleteAt(int index) {
+        if (head == nullptr || index < 0) {
+            cout << "Invalid operation: List is empty or index is negative." << endl;
+            return;
         }
 
-        cout << "Equipment '" << equipmentName << "' not found." << endl;
+        LabEquipment* current = head;
+        LabEquipment* previous = nullptr;
+
+        if (index == 0) {
+            head = head->next;
+            if (head != nullptr) {
+                head->prev = nullptr;
+            }
+            delete current;
+            cout << "Deleted at index " << index << " successfully." << endl;
+            return;
+        }
+
+        int count = 0;
+        while (current != nullptr && count < index) {
+            previous = current;
+            current = current->next;
+            count++;
+        }
+
+        if (current == nullptr) {
+            cout << "Index out of range." << endl;
+            return;
+        }
+
+        previous->next = current->next;
+        if (current->next != nullptr) {
+            current->next->prev = previous;
+        }
+        delete current;
+        //cout << "Deleted at index " << index << " successfully." << endl;
     }
+
+    void deleteEquipmentBySerialNumber(const string& serialNumber) {
+        LabEquipment* current = head;
+        int index = 0;
+
+        // Traverse the list to find the equipment by serial number
+        while (current != nullptr) {
+            if (current->serial == serialNumber) {
+                // Found the equipment, display details
+                cout << "----------------------------" << endl;
+                cout << "--- Details of Equipment ---" << endl;
+                cout << "----------------------------" << endl << endl;
+                cout << "Name     : " << current->name << endl;
+                cout << "Category : " << current->category << endl;
+                cout << "Model    : " << current->model << endl;
+                cout << endl;
+                if (current->isLent == true) {
+                    cout << "Details of the students who have the equipment" << endl;
+                    cout << "Student Name               : " << current->studentName << endl;
+                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
+                    cout << "Date of the record         : " << current->lendDate << endl <<endl;
+                }
+                
+
+                // Ask user if details are correct
+                char choice;
+                cout << "Are these details correct? (Yes - y/No - n)  : ";
+                cin >> choice;
+
+                if (choice == 'y') {
+                    // Delete equipment using deleteAt method at the found index
+                    deleteAt(index);
+
+                    // Display success message
+                    cout << endl;
+                    cout << "Equipment with serial number '" << serialNumber << "' deleted successfully." << endl;
+                    return;
+                }
+                else if (choice == 'n') {
+                    // User wants to retry, break the loop
+                    break;
+                }
+                else {
+                    // Invalid choice
+                    cout << "Invalid choice. Please enter y or n." << endl;
+                    return;
+                }
+            }
+            current = current->next;
+            index++;
+        }
+
+        // If equipment not found
+        cout << "\nEquipment with serial number '" << serialNumber << "' not found." << endl;
+    }
+
+    
 
     // Method to search for an equipment by serial number
     void searchBySerial(const string& serialNumber) {
@@ -250,7 +461,13 @@ public:
                 cout << "Name        : " << current->name << endl;
                 cout << "Category    : " << current->category << endl;
                 cout << "Model       : " << current->model << endl;
-                cout << "Avalability : "  << (current->isLent ? "Available" : "Not Available") << endl << endl;
+                cout << "Avalability : "  << (current->isLent ? "Not Available" : "Available") << endl << endl;
+                if (current->isLent == true) {
+                    cout << "Details of the students who have the equipment" << endl;
+                    cout << "Student Name               : " << current->studentName << endl;
+                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
+                    cout << "Date of the record         : " << current->lendDate << endl << endl;
+                }
 
                 found = true;
                 break;
@@ -264,6 +481,44 @@ public:
         }
     }
 
+    void returnEquipment(const string& serialNumber) {
+        LabEquipment* current = head;
+
+        // Traverse the list to find the equipment by serial number
+        while (current != nullptr) {
+            if (current->serial == serialNumber) {
+                 // Found the equipment, display details
+                cout << "----------------------------" << endl;
+                cout << "--- Details of Equipment ---" << endl;
+                cout << "----------------------------" << endl << endl;
+                cout << "Name        : " << current->name << endl;
+                cout << "Category    : " << current->category << endl;
+                cout << "Model       : " << current->model << endl;
+                cout << "Avalability : " << (current->isLent ? "Not Available" : "Available") << endl << endl;
+                if (current->isLent == true) {
+                    cout << "Details of the students who have the equipment" << endl;
+                    cout << "Student Name               : " << current->studentName << endl;
+                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
+                    cout << "Date of the record         : " << current->lendDate << endl << endl;
+                }
+
+                // Mark the equipment as available
+                current->isLent = false;
+
+                // Clear student data
+                current->studentName = "-1";
+                current->studentRegisterNumber = "-1";
+                current->lendDate = "-1";
+
+                cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
+                return;
+            }
+            current = current->next;
+        }
+
+        // Equipment with the specified serial number not found
+        cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
+    }
 
 
 
