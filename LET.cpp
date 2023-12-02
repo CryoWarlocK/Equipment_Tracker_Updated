@@ -20,6 +20,7 @@ void runProgram() {
 
 int main() {
     EquipmentList dll;
+    /*
     dll.insertLast("Oscilloscope", "Measurement", "Tektronix TDS210", "OS-12345", true);
     dll.insertLast("Function Generator", "Signal Generator", "Agilent 33500B", "FG-67890", false);
     dll.insertLast("Multimeter", "Measurement", "Fluke 87V", "MM-24680", true);
@@ -40,10 +41,13 @@ int main() {
     dll.insertLast("Logic Analyzer", "Measurement", "Agilent 16802A", "LA-13579", false);
     dll.insertLast("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
     dll.insertLast("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false);
-
+    */
+    //dll.insertLast("Capacitance Meter", "Measurement", "Keysight U1733C", "CM-98765", true);
+    //dll.insertLastWS("Digital Power Supply", "Power", "Rigol DP832A", "DPS-11223", false,"Janitha","EG/2021/4599", "2/12/2023");
     bool isRunning = true;  // Boolean variable to control the loop
-    string name, model, serial, equipmentToDelete, searchSerial;
+    string name, model, serial, equipmentToDelete, serialNumber;
     bool isLent;
+    string filename = "equipment_data.csv";
     while (isRunning) {
         int Opt;
         int selectedCategory = -1;
@@ -51,14 +55,17 @@ int main() {
         cout << GREEN_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
         cout << "Please enter a menu number corresponding to your need." << endl;
         cout << "1. Lend Equipment" << endl;
-        cout << "1.1. Return Equipment" << endl;
-        cout << "2. Add Equipment " << endl;
-        cout << "3. See all Categories " << endl;
-        cout << "4. See all the equipment (sorted) " << endl;
-        cout << "5. Delete an Equipment " << endl;
-        cout << "6. Search Equipment " << endl;
-        cout << "7. Print all the equipments " << endl;
-        cout << "8. Exit " << endl;
+        cout << "2. Return Equipment" << endl;
+        cout << "3. Add Equipment " << endl;
+        cout << "4. See all Categories " << endl;
+        cout << "5. See all the equipment (sorted) " << endl;
+        cout << "6. Delete an Equipment " << endl;
+        cout << "7. Search Equipment " << endl;
+        cout << "8. Print all the equipments " << endl;
+        cout << "9. Save data locally" << endl;
+        cout << "10. Load data from local machine" << endl;
+        cout << "11. Exit " << endl;
+        
         cout << "_____________________________________________________________" << endl;
         cin >> Opt;
 
@@ -67,7 +74,17 @@ int main() {
             system("cls");
             cout << "Lend Equipment option selected" << endl;
             break;
+
         case 2:
+            system("cls");
+            cout << "Return Equipment option selected" << endl;
+            cout << "Enter the serial number of the equipment to be returned: ";
+            cin >> serialNumber;
+
+            dll.returnEquipment(serialNumber);
+            break;
+
+        case 3:
             system("cls");
             cout << "Add Equipment option selected" << endl;
             cout << "_______________________________" << endl;
@@ -100,36 +117,51 @@ int main() {
 
             cout << "Equipment added successfully to category: " << selectedCategory << endl;
             break;
-        case 3:
+        case 4:
             system("cls");
             // Print all unique categories with numbers or letters
             dll.printUniqueCategories();
             break;
         case 5:
-            system("cls");
-            cout << "Delete an Equipment option selected" << endl;
-            cout << "Enter the name of the equipment you want to delete: ";
-            cin.ignore(); // Ignore any previous newline character in the input buffer
-            getline(cin, equipmentToDelete);
-
-            // Delete the equipment by name
-            dll.deleteEquipmentByName(equipmentToDelete);
-            break;
+            
         case 6:
             system("cls");
-            cout << "Enter serial number to search: ";
-            
-            cin >> searchSerial;
+            cout << "Delete an Equipment option selected" << endl << endl;
+            cout << "Enter the serial number of the equipment you want to delete: ";
 
-            dll.searchBySerial(searchSerial);
+            cin >> serialNumber;
+
+            // Delete the equipment by serial number
+            dll.deleteEquipmentBySerialNumber(serialNumber);
             break;
 
         case 7:
             system("cls");
+            cout << "Enter the equipment serial number : ";
+            cin >> serialNumber;
+            dll.searchBySerial(serialNumber);
+            break;
+
+        case 8:
+            system("cls");
             cout << "Print all the equipments option selected" << endl;
             dll.print();
             break;
-        case 8:
+        
+
+        case 9: // Save data to CSV and exit
+            system("cls");
+            dll.saveToCSV(filename);
+            isRunning = false;
+            break;
+
+        case 10: // Load data from CSV
+            system("cls");
+            cout << "Data loaded from local machine" << endl;
+            dll.loadFromCSV(filename);
+            break;
+
+        case 11:
             system("cls");
             isRunning = false;  // Set the boolean variable to false to exit the loop
             break;
