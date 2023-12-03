@@ -89,8 +89,8 @@ int main() {
             cout << "Please select a category by entering its corresponding number" << endl;
             cin >> selectedCategory;
             dll.addEquipmentToCategory(selectedCategory);
-
-            cout << "Equipment added successfully to category: " << selectedCategory << endl;
+            cout << "                                                              " << endl;
+            cout << "Equipment added successfully!" << endl;
             break;
         case 4:
             system("cls");
