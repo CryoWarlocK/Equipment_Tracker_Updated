@@ -22,6 +22,7 @@ int main() {
     EquipmentList dll;
     bool isRunning = true;  // Boolean variable to control the loop
     string name, model, serial, equipmentToDelete, serialNumber;
+    string categoryName;
     bool isLent;
     string filename = "equipment_data.csv";
     while (isRunning) {
@@ -147,11 +148,12 @@ int main() {
 
         case 12: 
             system("cls");
-            string categoryName;
-            cout << "Enter the category you want to filter :";
-            cin >> categoryName;
+            cout << "Here are the list of unique categories" << endl;
+            dll.printUniqueCategories();
+            cout << "Enter the category you want to filter :" << endl;
+            cin >> selectedCategory;
 
-            dll.filterByCategory(categoryName);
+            dll.filterByCategory(selectedCategory);
             break;
 
         default:
