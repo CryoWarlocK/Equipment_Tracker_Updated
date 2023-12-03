@@ -387,6 +387,7 @@ public:
         if (isLent != 0 && isLent != 1) {
             cout << "Invalid Insertion. Please Check again and enter either 0 or 1";
             return checkAvailability();
+          
         }
         else {
             return isLent;
