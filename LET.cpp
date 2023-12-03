@@ -135,8 +135,3 @@ int main() {
     }
     return 0;
 }
-
-
-//find the time complexities
-//implement a seacrh method by serial number
-//implement a print method for one by one printing.
