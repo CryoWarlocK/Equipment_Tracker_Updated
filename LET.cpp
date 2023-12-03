@@ -49,11 +49,12 @@ int main() {
         cout << "5. Add Equipment with category" << endl;
         cout << "6. Delete an Equipment " << endl;
         cout << "7. Search Equipment " << endl;
-        cout << "8. See all Categories " << endl;
+        cout << "8. Print Equipment relevant to its category" << endl;
         cout << "9. Filter by category" << endl;
         cout << "10. Print all the equipments " << endl;
         cout << "11. Save data locally" << endl;
         cout << "12. Exit" << RESET_COLOR << endl;
+
         
         cout << "_____________________________________________________________" << endl;
         cout << "Enter the number corresponding to your instruction : ";
@@ -123,11 +124,12 @@ int main() {
 
         case 8:
             system("cls");
-            // Print all unique categories with numbers or letters
-            dll.printUniqueCategories();
+            cout << "Print all the equipments option selected" << endl;
+            dll.printEquipmentByCategory();
+
             break;
         
-        case 19:
+        case 9:
             system("cls");
             cout << "Here are the list of unique categories" << endl;
             dll.printUniqueCategories();
@@ -150,6 +152,7 @@ int main() {
             dll.saveToCSV(filename);
             isRunning = false;
             break;
+
 
         default:
             cout << "Please enter a valid option key" << endl;
