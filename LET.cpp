@@ -68,7 +68,7 @@ int main() {
             system("cls");
             cout << "Add Equipment option selected" << endl;
             cout << "_______________________________" << endl;
-            cout << "Please select a category from below list to add a equipment" << endl;
+            cout << "Please select a category from below list to add an equipment" << endl;
 
             // Print all unique categories with numbers or letters
             dll.printUniqueCategories();
