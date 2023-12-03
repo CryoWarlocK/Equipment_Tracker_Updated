@@ -379,6 +379,22 @@ public:
         }
     }
 
+
+    bool checkAvailability() {
+        bool isLent;
+        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
+        cin >> isLent;
+        if (isLent != 0 && isLent != 1) {
+            cout << "Invalid Insertion. Please Check again and enter either 0 or 1";
+            return checkAvailability();
+          
+        }
+        else {
+            return isLent;
+        }
+    };
+
+
     void addEquipment() {
         string name, model, category, serial;
         bool isLent;
@@ -395,8 +411,7 @@ public:
         cout << "Enter equipment serial number: ";
         cin >> serial;
 
-        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
-        cin >> isLent;
+        isLent=checkAvailability();
 
         if (isLent) {
             string studentName, registerNumber, lendDate;
