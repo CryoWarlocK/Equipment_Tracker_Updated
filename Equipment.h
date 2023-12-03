@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 
-
+//7.41
 
 using namespace std;
 //Node in our code
@@ -240,24 +240,53 @@ public:
         }
         
     }
-
-    // Method to filter and display equipment based on a specific category
-    void filterByCategory(const string& filterCategory) {
+    /*
+    // Method to filter and display equipment based on a specific category number
+    void filterByCategory(int categoryNumber) {
         LabEquipment* current = head;
+        int currentCategoryNumber = 1;
+
+        // Find the category corresponding to the selected category number
         while (current != NULL) {
-            if (current->category == filterCategory) {
-                cout << "Name          : " << current->name << endl;
-                cout << "Category      : " << current->category << endl;
-                cout << "Model         : " << current->model << endl;
-                cout << "Serial Number : " << current->serial << endl;
-                cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
-                cout << endl;
-                cout << endl;
+            LabEquipment* temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
             }
+
+            if (isUnique) {
+                if (currentCategoryNumber == categoryNumber) {
+                    // Display equipment in the selected category
+                    cout << "Equipment in category: " << current->category << endl;
+                    while (current != NULL && current->category == temp->category) {
+                        cout << "Name          : " << current->name << endl;
+                        cout << "Model         : " << current->model << endl;
+                        cout << "Serial Number : " << current->serial << endl;
+                        cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
+                        cout << endl;
+
+                        current = current->next;
+                    }
+                    return;
+                }
+
+                currentCategoryNumber++;
+            }
+
             current = current->next;
         }
-        cout << endl;
+
+        // If the category is not found
+        cout << "Invalid category number. No equipment to display." << endl;
     }
+    */
+
+
     /*
     void lendEquipment(const string& Snum, const string& studentName, const string& registerNumber, const string& lendDate) {
         LabEquipment* current = head;
@@ -369,8 +398,11 @@ public:
 
                         cout << "Equipment borrowed successfully." << endl;
                     }
-                    else {
+                    else if (confirm == 'n' || confirm == 'N'){
                         cout << "Borrowing canceled." << endl;
+                    }
+                    else {
+                        cout << "Please enter a valid input" << endl;
                     }
                 }
 
