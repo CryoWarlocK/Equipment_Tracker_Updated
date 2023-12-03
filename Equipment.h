@@ -702,7 +702,7 @@ public:
         printUniqueCategories();
 
         int categoryChoice;
-        cout << "Enter the category number to view equipment: ";
+        cout << "Enter the category number to view the equipment under choosen category: ";
         cin >> categoryChoice; cout << endl;
 
         LabEquipment* current = head;

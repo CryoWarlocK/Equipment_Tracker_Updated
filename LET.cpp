@@ -148,6 +148,7 @@ int main() {
 
         case 12: 
             system("cls");
+            cout << "Filter By Category option is selected" << endl << endl;
             dll.printEquipmentByCategory(); 
             //cout << "Here are the list of unique categories" << endl;
             //dll.printUniqueCategories();
