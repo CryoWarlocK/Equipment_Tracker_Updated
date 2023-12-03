@@ -426,12 +426,16 @@ public:
 
         cout << "Enter equipment name: ";
         cin >> name;
+        clearInputBuffer();
         cout << "Enter equipment model: ";
         cin >> model;
+        clearInputBuffer();
         cout << "Enter equipment serial: ";
         cin >> serial;
-        cout << "Enter availability (1 for true, 0 for false): ";
+        clearInputBuffer();
+        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
         cin >> isLent;
+
 
         LabEquipment* current = head;
         int currentCategoryNumber = 1;
