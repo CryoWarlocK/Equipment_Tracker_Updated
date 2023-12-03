@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 
-//7.41
+//7.47
 
 using namespace std;
 //Node in our code
@@ -402,7 +402,8 @@ public:
                         cout << "Borrowing canceled." << endl;
                     }
                     else {
-                        cout << "Please enter a valid input" << endl;
+                        cout << "Please enter a valid input yes or no" << endl;
+                        return;
                     }
                 }
 
