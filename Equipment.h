@@ -233,8 +233,13 @@ public:
         
     }
     
-
+    
     void printUniqueCategories() {
+        // Check if the list is empty
+        if (head == nullptr) {
+            cout << "The list is empty." << endl;
+            return;
+        }
         LabEquipment* current = head;
         LabEquipment* temp;
         int categoryNumber = 1;
@@ -258,9 +263,10 @@ public:
 
             current = current->next;
         }
-
+        cout << "Please select a category from above list to add a equipment" << endl;
         cout << endl;
     }
+    
 
     void lendEquipment() {
         string serialNum;
@@ -373,6 +379,106 @@ public:
         cout << "Equipment added successfully." << endl;
     }
 
+    void addEquipmentToSelectedCategory() {
+        // Check if the list is empty
+        if (head == nullptr) {
+            cout << "The list is empty." << endl;
+            return;
+        }
+
+        LabEquipment* current = head;
+        LabEquipment* temp;
+        int categoryNumber = 1;
+
+        // Print unique categories in a numbered list
+        while (current != nullptr) {
+            temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                cout << categoryNumber << ". " << current->category << endl;
+                categoryNumber++;
+            }
+
+            current = current->next;
+        }
+
+        cout << "Please select a category from the above list to add an equipment: ";
+        int selectedCategory;
+        cin >> selectedCategory;
+
+        current = head;
+        int currentCategoryNumber = 1;
+
+        // Find the category corresponding to the selected category number
+        while (current != nullptr) {
+            LabEquipment* temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                if (currentCategoryNumber == selectedCategory) {
+                    // Add equipment to the found category
+                    string name, model, serial;
+                    bool isAvailable;
+
+                    cout << "Enter equipment name: ";
+                    cin >> name;
+                    clearInputBuffer();
+                    cout << "Enter equipment model: ";
+                    cin >> model;
+                    clearInputBuffer();
+                    cout << "Enter equipment serial: ";
+                    cin >> serial;
+                    clearInputBuffer();
+
+                    LabEquipment* newEquipment = new LabEquipment(name, current->category, model, serial, 0);
+
+                    if (current->next == nullptr) {
+                        // The category is the last one in the list
+                        current->next = newEquipment;
+                        newEquipment->prev = current;
+                        tail = newEquipment;
+                    }
+                    else {
+                        // Insert the new equipment between two categories
+                        newEquipment->next = current->next;
+                        newEquipment->prev = current;
+                        current->next->prev = newEquipment;
+                        current->next = newEquipment;
+                    }
+
+                    size++;
+                    cout << "Equipment added successfully to category: " << current->category << endl;
+                    return;
+                }
+
+                currentCategoryNumber++;
+            }
+
+            current = current->next;
+        }
+
+        // If the category is not found
+        cout << "Invalid category number. Equipment not added." << endl;
+    }
+
+    /*
     // Method to add equipment to a specific category
     void addEquipmentToCategory(int categoryNumber) {
         string name, model, serial;
@@ -436,7 +542,7 @@ public:
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
     }
-
+    */
   
 
     void deleteAt(int index) {

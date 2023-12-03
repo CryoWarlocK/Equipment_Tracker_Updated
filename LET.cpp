@@ -74,17 +74,7 @@ int main() {
             system("cls");
             cout << "Add Equipment option selected" << endl;
             cout << "_______________________________" << endl;
-            cout << "Please select a category from below list to add a equipment" << endl;
-
-            // Print all unique categories with numbers or letters
-            dll.printUniqueCategories();
-            cout << "____________________________________" << endl;
-            //cout << "Please enter a category from above list" << endl;
-            cout << "Please select a category by entering its corresponding number" << endl;
-            cin >> selectedCategory;
-            dll.addEquipmentToCategory(selectedCategory);
-            cout << "                                                              " << endl;
-            cout << "Equipment added successfully!" << endl;
+            dll.addEquipmentToSelectedCategory();
             break;
         case 5:
             system("cls");
