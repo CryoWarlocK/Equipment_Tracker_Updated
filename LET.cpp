@@ -23,7 +23,7 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << "________________________________________________________________" << endl;
-        cout <<  RED_COLOR << "_____________ Lab Equipment Tracker Version 1.121 ______________" << RESET_COLOR<< endl;
+        cout <<  RED_COLOR << "_____________ Lab Equipment Tracker Version 1.124 ______________" << RESET_COLOR<< endl;
         cout << "________________________________________________________________" << endl;
         
         cout << "                                                              " << endl;
