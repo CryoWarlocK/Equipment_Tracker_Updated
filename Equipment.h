@@ -637,7 +637,8 @@ public:
 
         int categoryChoice;
         cout << "Enter the category number to view the equipment under choosen category: ";
-        cin >> categoryChoice; cout << endl;
+        cin >> categoryChoice;
+        cout << endl;
 
         LabEquipment* current = head;
         int currentCategory = 1;
