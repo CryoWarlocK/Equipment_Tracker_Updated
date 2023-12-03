@@ -204,14 +204,6 @@ public:
             size++;
         }
     }
-    /*
-    void availability() {
-        if (current->isLent == 1)
-            cout << "Available" << endl;
-        else
-            cout << "Not Available" << endl;
-    }
-    */
 
     void print() {
         LabEquipment* current;
@@ -317,18 +309,6 @@ public:
                         //validate the lend date 
                         //after that 
                         current->lendDate = lendDate;
-
-                        
-                        // Update equipment status
-                        /*  // Get student details
-                        clearInputBuffer();
-                        
-                        cout << "Enter Student name: ";
-                        getline(cin, current->studentName);
-                        cout << "Enter Student's register number: ";
-                        cin >> registerNumber;
-                        
-                        */
 
                         cout << "Equipment borrowed successfully." << endl;
                     }
@@ -685,9 +665,4 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
-
-
-
-
-
 };
