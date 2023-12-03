@@ -184,6 +184,10 @@ public:
         size = 0;
     }
 
+    void clearInputBuffer() {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     
    
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
@@ -214,19 +218,29 @@ public:
     void print() {
         LabEquipment* current;
         current = head;
-        while (current != NULL)
-        {
-            
-            cout << "Name          : " << current->name << endl;
-            cout << "Category      : " << current->category << endl;
-            cout << "Model         : " << current->model << endl;
-            cout << "Serial Number : " << current->serial << endl;
-            cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
-            cout << endl;
-            cout << endl;
-            current = current->next;
+        if (current == NULL) {
+            cout << "--------------------------------------------------------------------" << endl;
+            cout << "Oops! It's seems like you don't have and data to print" << endl;
+            cout << "Please insert equipment to the list first using add equipment option" << endl;
+            cout << "Otherwise you can load sample data from load from local machine option" << endl;
         }
-        cout << endl;
+        else {
+            while (current != NULL)
+            {
+
+                cout << "Name          : " << current->name << endl;
+                cout << "Category      : " << current->category << endl;
+                cout << "Model         : " << current->model << endl;
+                cout << "Serial Number : " << current->serial << endl;
+                cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
+                cout << endl;
+                cout << endl;
+                current = current->next;
+            }
+            cout << endl;
+
+        }
+        
     }
 
     // Method to filter and display equipment based on a specific category
@@ -329,11 +343,13 @@ public:
 
                     if (confirm == 'y' || confirm == 'Y') {
                         // Get student details
+                        clearInputBuffer();
                         string studentName, registerNumber, lendDate;
                         cout << "Enter Student name: ";
-                        cin >> studentName;
+                        getline(cin, current->studentName);
                         cout << "Enter Student's register number: ";
                         cin >> registerNumber;
+                        clearInputBuffer();
                         cout << "Enter the lending date (YYYY-MM-DD): ";
                         cin >> lendDate;
 
