@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 
-//7.47
+//8.16
 
 using namespace std;
 //Node in our code
@@ -462,7 +462,7 @@ public:
     // Method to add equipment to a specific category
     void addEquipmentToCategory(int categoryNumber) {
         string name, model, serial;
-        bool isLent;
+        bool isAvailable, isLent;
 
         cout << "Enter equipment name: ";
         cin >> name;
@@ -473,10 +473,7 @@ public:
         cout << "Enter equipment serial: ";
         cin >> serial;
         clearInputBuffer();
-        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
-        cin >> isLent;
-
-
+    
         LabEquipment* current = head;
         int currentCategoryNumber = 1;
 
@@ -496,7 +493,7 @@ public:
             if (isUnique) {
                 if (currentCategoryNumber == categoryNumber) {
                     // Add equipment to the found category
-                    LabEquipment* newEquipment = new LabEquipment(name, current->category, model, serial, isLent);
+                    LabEquipment* newEquipment = new LabEquipment(name, current->category, model, serial,0);
 
                     if (current->next == NULL) {
                         // The category is the last one in the list
@@ -513,7 +510,6 @@ public:
                     }
 
                     size++;
-                    cout << "Equipment added successfully to category: " << current->category << endl;
                     return;
                 }
 
