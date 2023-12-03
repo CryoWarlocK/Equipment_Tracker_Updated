@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "Equipment.h"
-#include<string>
+#include <string>
 
 //test comment 4
 using namespace std;
