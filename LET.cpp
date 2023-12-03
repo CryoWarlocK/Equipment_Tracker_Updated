@@ -29,8 +29,18 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << "_____________________________________________________________" << endl;
-        cout <<  RED_COLOR << "------------ Lab Equipment Tracker Version 1.0 --------------" << RESET_COLOR<< endl;
-        cout << LIGHTBLUE_COLOR << "Please enter a menu number corresponding to your need." << endl;
+        cout <<  RED_COLOR << "____________ Lab Equipment Tracker Version 1.0 ______________" << RESET_COLOR<< endl;
+        cout << "______________________________________________________________" << endl;
+        cout << "______________________ INSTRUCTIONS ________________________" << endl;
+        
+        cout << "                                                              " << endl;
+        cout << "~ Use the number corresponding to the menu item for interact with the program." << endl;
+        cout << "~ Initially the program will not include any equipment data." << endl;
+        cout << "~ You can add dummy data by selecting option 10." << endl;
+        cout << "                                                              " << endl;
+        cout << "                    ----- MENU -----" << endl;
+        cout << "                                                              " << endl;
+
         cout << "1. Lend Equipment" << endl;
         cout << "2. Return Equipment" << endl;
         cout << "3. Add Equipment by selecting existing category " << endl;
