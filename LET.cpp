@@ -11,13 +11,6 @@ const char* RED_COLOR = "\033[1;31m";
 const char* LIGHTBLUE_COLOR = "\033[1;36m";
 const char* RESET_COLOR = "\033[0m";
 
-void runProgram() {
- 
-    
-}
-
-
-
 int main() {
     EquipmentList dll;
     bool isRunning = true;  // Boolean variable to control the loop
@@ -29,19 +22,13 @@ int main() {
         //system("cls");
         int Opt;
         int selectedCategory = -1;
-        cout << "_____________________________________________________________" << endl;
-        cout <<  RED_COLOR << "____________ Lab Equipment Tracker Version 1.0 ______________" << RESET_COLOR<< endl;
-        cout << "______________________________________________________________" << endl;
-        cout << "______________________ INSTRUCTIONS ________________________" << endl;
+        cout << "________________________________________________________________" << endl;
+        cout <<  RED_COLOR << "_____________ Lab Equipment Tracker Version 1.116 ______________" << RESET_COLOR<< endl;
+        cout << "________________________________________________________________" << endl;
         
-        cout << "                                                              " << endl;
-        cout << "~ Use the number corresponding to the menu item for interact with the program." << endl;
-        cout << "~ Initially the program will not include any equipment data." << endl;
-        cout << "~ You can add dummy data by selecting option 1." << endl;
         cout << "                                                              " << endl;
         cout << "                    ----- MENU -----" << endl;
         cout << "                                                              " << endl;
-
         cout << " 1. Load data from local machine" << endl;
         cout << " 2. Lend Equipment"<< endl;
         cout << " 3. Return Equipment"<< endl;
@@ -52,6 +39,7 @@ int main() {
         cout << " 8. Print Equipment relevant to its category" << endl;
         cout << " 9. Save data locally" << endl;
         cout << "10. Exit" << RESET_COLOR << endl;
+        cout << "11. Instructions" << endl;
 
         
         cout << "_____________________________________________________________" << endl;
@@ -126,7 +114,7 @@ int main() {
             dll.printEquipmentByCategory();
 
             break;
-      
+
         case 9: // Save data to CSV and exit
             system("cls");
             dll.saveToCSV(filename);
@@ -137,11 +125,22 @@ int main() {
             dll.saveToCSV(filename);
             isRunning = false;  // Set the boolean variable to false to exit the loop
             break;
-     
+
+        case 11:
+            system("cls");
+            cout << "________________________________ INSTRUCTIONS ________________________________" << endl;
+            cout << "                                                                              " << endl;
+            cout << "~ Use the number corresponding to the menu item for interact with the program." << endl;
+            cout << "~ Initially the program will not include any equipment data." << endl;
+            cout << "~ You can add dummy data by selecting option 1." << endl;
+            break;
+
+
         default:
             cout << "Please enter a valid option key" << endl;
             isRunning = false;
             break;
+        }
     }
     return 0;
 }
