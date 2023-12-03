@@ -1,0 +1,21 @@
+Oscilloscope,Measurement,Tektronix TDS210,OS-12345,1,-1,-1,-1
+Multimeter,Measurement,Fluke 87V,MM-24680,1,John Doe,EG/2022/1234,2022-11-15
+Power Supply,Power,Agilent E3631A,PS-13579,1,Janitha,EG/2021/4599,2023-12-03
+Spectrum Analyzer,Signal Analyzer,Rohde & Schwarz FSW,SA-54321,1,Jane Smith,EG/2021/5678,2022-01-20
+Digital Logic Analyzer,Measurement,Keysight MSO-X 3034T,DL-98765,1,Hansika,EG/2021/4604,2023-12-03
+Signal Generator,Signal Generator,Keysight 33522A,SG-11223,1,Alice Johnson,EG/2023/9876,2022-08-05
+Function Generator,Signal Generator,Rigol DG1022Z,FG-45678,1,Karunathilake,EG/2021/4604,2023-10-29
+Digital Oscilloscope,Measurement,Tektronix MSO2014B,OS-13579,1,Bob Williams,EG/2020/3456,2022-03-10
+Voltage Regulator,Power,LM317,VR-98765,0,-1,-1,-1
+Signal Generator,Signal Generator,B&K Precision 4040A,SG-24680,1,Emily Davis,EG/2022/6543,2022-06-25
+Logic Probe,Measurement,HP 1043A,LP-11223,0,-1,-1,-1
+Power Supply,Power,Agilent E3646A,PS-54321,1,Michael Brown,EG/2021/7890,2022-09-18
+Waveform Generator,Signal Generator,Teledyne LeCroy ArbStudio 1102,WG-13579,0,-1,-1,-1
+Frequency Counter,Measurement,Fluke 725,FC-98765,1,Sarah Wilson,EG/2023/2345,2022-04-30
+DC Motor,Motors,NEMA 23,DM-11223,0,-1,-1,-1
+Soldering Station,Tools,Hakko FX-888D,SS-24680,1,David Miller,EG/2020/8765,2022-02-14
+Logic Analyzer,Measurement,Agilent 16802A,LA-13579,0,-1,-1,-1
+Capacitance Meter,Measurement,Keysight U1733C,CM-98765,1,Olivia Taylor,EG/2022/4321,2022-07-12
+Digital Power Supply,Power,Rigol DP832A,DPS-11223,0,-1,-1,-1
+Capacitance Meter,Measurement,Keysight U1733C,CM-98765,1,Ethan Moore,EG/2021/5678,2022-11-02
+Digital Power Supply,Power,Rigol DP832A,DPS-11223,0,-1,-1,-1
