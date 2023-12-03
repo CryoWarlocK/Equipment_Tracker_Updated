@@ -37,23 +37,21 @@ int main() {
         cout << "                                                              " << endl;
         cout << "~ Use the number corresponding to the menu item for interact with the program." << endl;
         cout << "~ Initially the program will not include any equipment data." << endl;
-        cout << "~ You can add dummy data by selecting option 10." << endl;
+        cout << "~ You can add dummy data by selecting option 1." << endl;
         cout << "                                                              " << endl;
         cout << "                    ----- MENU -----" << endl;
         cout << "                                                              " << endl;
 
-        cout << "1. Load data from local machine" << endl;
-        cout << "2. Lend Equipment"<< endl;
-        cout << "3. Return Equipment"<< endl;
-        cout << "4. Add Equipment by selecting existing category " << endl;
-        cout << "5. Add Equipment with category" << endl;
-        cout << "6. Delete an Equipment " << endl;
-        cout << "7. Search Equipment " << endl;
-        cout << "8. Print Equipment relevant to its category" << endl;
-        cout << "9. Filter by category" << endl;
-        cout << "10. Print all the equipments " << endl;
-        cout << "11. Save data locally" << endl;
-        cout << "12. Exit" << RESET_COLOR << endl;
+        cout << " 1. Load data from local machine" << endl;
+        cout << " 2. Lend Equipment"<< endl;
+        cout << " 3. Return Equipment"<< endl;
+        cout << " 4. Add Equipment by selecting existing category " << endl;
+        cout << " 5. Add Equipment with category" << endl;
+        cout << " 6. Delete an Equipment " << endl;
+        cout << " 7. Search Equipment " << endl;
+        cout << " 8. Print Equipment relevant to its category" << endl;
+        cout << " 9. Save data locally" << endl;
+        cout << "10. Exit" << RESET_COLOR << endl;
 
         
         cout << "_____________________________________________________________" << endl;
@@ -128,45 +126,23 @@ int main() {
             dll.printEquipmentByCategory();
 
             break;
-        
-        case 9:
-            system("cls");
-            cout << "Here are the list of unique categories" << endl;
-            dll.printUniqueCategories();
-            cout << "Enter the category you want to filter :" << endl;
-            // cin >> selectedCategory;
-
-             //dll.filterByCategory(selectedCategory);
-            break;
-       
-        
-        case 10:
-            system("cls");
-            cout << "Print all the equipments option selected" << endl;
-            dll.print();
-            break;
-       
-       
-        case 11: // Save data to CSV and exit
+      
+        case 9: // Save data to CSV and exit
             system("cls");
             dll.saveToCSV(filename);
-            isRunning = false;
             break;
 
-
+        case 10:
+            system("cls");
+            dll.saveToCSV(filename);
+            isRunning = false;  // Set the boolean variable to false to exit the loop
+            break;
+     
         default:
             cout << "Please enter a valid option key" << endl;
             isRunning = false;
             break;
-
-        case 12:
-            system("cls");
-            isRunning = false;  // Set the boolean variable to false to exit the loop
-            break;
-        }
-
     }
-  
     return 0;
 }
 
