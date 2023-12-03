@@ -5,6 +5,7 @@
 #include <cstdlib>
 
 
+
 using namespace std;
 //Node in our code
 class LabEquipment {
@@ -92,7 +93,60 @@ public:
         return tail;
     }
 
-// test comment
+    void clearList() {
+        LabEquipment* current = head;
+        LabEquipment* next;
+
+        while (current != nullptr) {
+            next = current->next;
+            delete current;
+            current = next;
+        }
+
+        head = nullptr;
+        tail = nullptr;
+        size = 0;
+    }
+
+    void clearInputBuffer() {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    // Load equipment data from a CSV file
+    void loadFromCSV(const string& filename) {
+        // Clear the existing list
+        clearList();
+
+        ifstream file(filename);
+        if (!file.is_open()) {
+            cout << "Error opening file: " << filename << endl;
+            return;
+        }
+
+        string line;
+        while (getline(file, line)) {
+            istringstream ss(line);
+            string token;
+
+            // Parse the line using commas
+            string data[8];  // Assuming there are 8 fields in your CSV data
+            int index = 0;
+            while (getline(ss, token, ',')) {
+                data[index++] = token;
+                if (index >= 8) {
+                    break;  // Assuming there are 8 fields in your CSV data
+                }
+            }
+
+            // Create a LabEquipment object from the CSV data
+            if (index >= 8) {
+                insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], data[7]);
+            }
+        }
+
+        file.close();
+    }
 
     // Method to save equipment data to a CSV file
     void saveToCSV(const string& filename) {
@@ -134,62 +188,6 @@ public:
         }
     }
 
-    // Load equipment data from a CSV file
-    void loadFromCSV(const string& filename) {
-        // Clear the existing list
-        clearList();
-
-        ifstream file(filename);
-        if (!file.is_open()) {
-            cout << "Error opening file: " << filename << endl;
-            return;
-        }
-
-        string line;
-        while (getline(file, line)) {
-            istringstream ss(line);
-            string token;
-
-            // Parse the line using commas
-            string data[8];  // Assuming there are 8 fields in your CSV data
-            int index = 0;
-            while (getline(ss, token, ',')) {
-                data[index++] = token;
-                if (index >= 8) {
-                    break;  // Assuming there are 8 fields in your CSV data
-                }
-            }
-
-            // Create a LabEquipment object from the CSV data
-            if (index >= 8) {
-                insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], data[7]);
-            }
-        }
-
-        file.close();
-    }
-
-    void clearList() {
-        LabEquipment* current = head;
-        LabEquipment* next;
-
-        while (current != nullptr) {
-            next = current->next;
-            delete current;
-            current = next;
-        }
-
-        head = nullptr;
-        tail = nullptr;
-        size = 0;
-    }
-
-    void clearInputBuffer() {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    }
-    
-   
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
         //Create the node
         LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent);
@@ -252,7 +250,7 @@ public:
                 cout << "Category      : " << current->category << endl;
                 cout << "Model         : " << current->model << endl;
                 cout << "Serial Number : " << current->serial << endl;
-                cout << "Availability  : " << current->isLent << endl;
+                cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
                 cout << endl;
                 cout << endl;
             }
@@ -343,22 +341,31 @@ public:
                     cin >> confirm;
 
                     if (confirm == 'y' || confirm == 'Y') {
+                        string lendDate;
                         // Get student details
                         clearInputBuffer();
-                        string studentName, registerNumber, lendDate;
+                        cout << "Enter Student name: ";
+                        getline(cin, current->studentName);
+                        cout << "Enter Student's register number: ";
+                        cin >> current->studentRegisterNumber;
+                        clearInputBuffer();
+                        cout << "Enter the lending date (YYYY-MM-DD): ";
+                        cin >>lendDate;
+                        //validate the lend date 
+                        //after that 
+                        current->lendDate = lendDate;
+
+                        
+                        // Update equipment status
+                        /*  // Get student details
+                        clearInputBuffer();
+                        
                         cout << "Enter Student name: ";
                         getline(cin, current->studentName);
                         cout << "Enter Student's register number: ";
                         cin >> registerNumber;
-                        clearInputBuffer();
-                        cout << "Enter the lending date (YYYY-MM-DD): ";
-                        cin >> lendDate;
-
-                        // Update equipment status and add student details
-                        current->isLent = true;
-                        current->studentName = studentName;
-                        current->studentRegisterNumber = registerNumber;
-                        current->lendDate = lendDate;
+                        
+                        */
 
                         cout << "Equipment borrowed successfully." << endl;
                     }
@@ -385,16 +392,16 @@ public:
 
         cout << "Enter equipment name: ";
         cin >> name;
-
+        clearInputBuffer();
         cout << "Enter equipment model: ";
         cin >> model;
-
+        clearInputBuffer();
         cout << "Enter equipment category: ";
         cin >> category;
-
+        clearInputBuffer();
         cout << "Enter equipment serial number: ";
         cin >> serial;
-
+        clearInputBuffer();
         cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
         cin >> isLent;
 
@@ -403,10 +410,10 @@ public:
 
             cout << "Enter student name: ";
             cin >> studentName;
-
+            clearInputBuffer();
             cout << "Enter student register number: ";
             cin >> registerNumber;
-
+            clearInputBuffer();
             cout << "Enter lend date: ";
             cin >> lendDate;
 

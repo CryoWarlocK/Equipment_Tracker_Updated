@@ -52,6 +52,7 @@ int main() {
         cout << "9. Save data locally" << endl;
         cout << "10. Load data from local machine" << endl;
         cout << "11. Exit " << RESET_COLOR << endl;
+        cout << "12. Filter by category" << endl;
         
         cout << "_____________________________________________________________" << endl;
         cout << "Enter the number corresponding to your instruction : ";
@@ -143,6 +144,14 @@ int main() {
             system("cls");
             isRunning = false;  // Set the boolean variable to false to exit the loop
             break;
+
+        case 12: 
+            system("cls");
+            string categoryName;
+            cout << "Enter the category you want to filter :";
+            cin >> categoryName;
+
+            dll.filterByCategory(categoryName);
 
         default:
             cout << "Please enter a valid option key" << endl;
