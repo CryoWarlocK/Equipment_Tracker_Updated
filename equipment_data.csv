@@ -4,7 +4,7 @@ Power Supply,Power,Agilent E3631A,PS-13579,1,Janitha,EG/2021/4599,2023-12-03
 Spectrum Analyzer,Signal Analyzer,Rohde & Schwarz FSW,SA-54321,1,Jane Smith,EG/2021/5678,2022-01-20
 Digital Logic Analyzer,Measurement,Keysight MSO-X 3034T,DL-98765,1,Hansika,EG/2021/4604,2023-12-03
 Signal Generator,Signal Generator,Keysight 33522A,SG-11223,1,Alice Johnson,EG/2023/9876,2022-08-05
-Function Generator,Signal Generator,Rigol DG1022Z,FG-45678,0,-1,-1,-1
+Function Generator,Signal Generator,Rigol DG1022Z,FG-45678,1,Karunathilake,EG/2021/4604,2023-10-29
 Digital Oscilloscope,Measurement,Tektronix MSO2014B,OS-13579,1,Bob Williams,EG/2020/3456,2022-03-10
 Voltage Regulator,Power,LM317,VR-98765,0,-1,-1,-1
 Signal Generator,Signal Generator,B&K Precision 4040A,SG-24680,1,Emily Davis,EG/2022/6543,2022-06-25
