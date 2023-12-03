@@ -152,6 +152,7 @@ int main() {
             cin >> categoryName;
 
             dll.filterByCategory(categoryName);
+            break;
 
         default:
             cout << "Please enter a valid option key" << endl;
