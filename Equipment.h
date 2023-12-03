@@ -311,14 +311,18 @@ public:
                         cin >> current->studentRegisterNumber;
                         clearInputBuffer();
                         cout << "Enter the lending date (YYYY-MM-DD): ";
-                        cin >>lendDate;
-                        //validate the lend date 
-                        //after that 
+                        cin >> lendDate;
+
+                        // Validate the lend date 
+                        // (You can add your validation logic here)
+
+                        // Update equipment status
+                        current->isLent = true;
                         current->lendDate = lendDate;
 
                         cout << "Equipment borrowed successfully." << endl;
                     }
-                    else if (confirm == 'n' || confirm == 'N'){
+                    else if (confirm == 'n' || confirm == 'N') {
                         cout << "Borrowing canceled." << endl;
                     }
                     else {
@@ -338,6 +342,7 @@ public:
             cout << "Equipment with the specified serial number not found." << endl;
         }
     }
+
 
     void addEquipment() {
         string name, model, category, serial;

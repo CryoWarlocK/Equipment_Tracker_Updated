@@ -12,7 +12,7 @@ Logic Probe,Measurement,HP 1043A,LP-11223,0,-1,-1,-1
 Power Supply,Power,Agilent E3646A,PS-54321,1,Michael Brown,EG/2021/7890,2022-09-18
 Waveform Generator,Signal Generator,Teledyne LeCroy ArbStudio 1102,WG-13579,0,-1,-1,-1
 Frequency Counter,Measurement,Fluke 725,FC-98765,1,Sarah Wilson,EG/2023/2345,2022-04-30
-DC Motor,Motors,NEMA 23,DM-11223,0,-1,-1,-1
+DC Motor,Motors,NEMA 23,DM-11223,1,Janiya,EG/2021/4599,2023-12-03
 Soldering Station,Tools,Hakko FX-888D,SS-24680,1,David Miller,EG/2020/8765,2022-02-14
 Logic Analyzer,Measurement,Agilent 16802A,LA-13579,0,-1,-1,-1
 Capacitance Meter,Measurement,Keysight U1733C,CM-98765,1,Olivia Taylor,EG/2022/4321,2022-07-12
