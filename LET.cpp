@@ -101,7 +101,7 @@ int main() {
 
         case 8:
             system("cls");
-            cout << "Print all the equipments option selected" << endl;
+            cout << "Print Equipment relevant to its category option selected" << endl;
             dll.printEquipmentByCategory();
 
             break;

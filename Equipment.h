@@ -355,26 +355,10 @@ public:
         cout << "Enter equipment serial number: ";
         cin >> serial;
         clearInputBuffer();
-        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
-        cin >> isLent;
 
-        if (isLent) {
-            string studentName, registerNumber, lendDate;
-
-            cout << "Enter student name: ";
-            cin >> studentName;
-            clearInputBuffer();
-            cout << "Enter student register number: ";
-            cin >> registerNumber;
-            clearInputBuffer();
-            cout << "Enter lend date: ";
-            cin >> lendDate;
-
-            insertLastWS(name, category, model, serial, isLent, studentName, registerNumber, lendDate);
-        }
-        else {
-            insertLast(name, category, model, serial, isLent);
-        }
+        
+        insertLast(name, category, model, serial, 0);
+        
 
         cout << "Equipment added successfully." << endl;
     }
