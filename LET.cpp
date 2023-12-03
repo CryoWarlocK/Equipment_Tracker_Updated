@@ -151,9 +151,9 @@ int main() {
             cout << "Here are the list of unique categories" << endl;
             dll.printUniqueCategories();
             cout << "Enter the category you want to filter :" << endl;
-            cin >> selectedCategory;
+           // cin >> selectedCategory;
 
-            dll.filterByCategory(selectedCategory);
+            //dll.filterByCategory(selectedCategory);
             break;
 
         default:
