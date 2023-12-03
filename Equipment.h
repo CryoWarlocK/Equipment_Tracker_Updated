@@ -355,26 +355,10 @@ public:
         cout << "Enter equipment serial number: ";
         cin >> serial;
         clearInputBuffer();
-        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
-        cin >> isLent;
 
-        if (isLent) {
-            string studentName, registerNumber, lendDate;
-
-            cout << "Enter student name: ";
-            cin >> studentName;
-            clearInputBuffer();
-            cout << "Enter student register number: ";
-            cin >> registerNumber;
-            clearInputBuffer();
-            cout << "Enter lend date: ";
-            cin >> lendDate;
-
-            insertLastWS(name, category, model, serial, isLent, studentName, registerNumber, lendDate);
-        }
-        else {
-            insertLast(name, category, model, serial, isLent);
-        }
+        
+        insertLast(name, category, model, serial, 0);
+        
 
         cout << "Equipment added successfully." << endl;
     }
@@ -477,73 +461,6 @@ public:
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
     }
-
-    /*
-    // Method to add equipment to a specific category
-    void addEquipmentToCategory(int categoryNumber) {
-        string name, model, serial;
-        bool isAvailable, isLent;
-
-        cout << "Enter equipment name: ";
-        cin >> name;
-        clearInputBuffer();
-        cout << "Enter equipment model: ";
-        cin >> model;
-        clearInputBuffer();
-        cout << "Enter equipment serial: ";
-        cin >> serial;
-        clearInputBuffer();
-    
-        LabEquipment* current = head;
-        int currentCategoryNumber = 1;
-
-        // Find the category corresponding to the selected category number
-        while (current != NULL) {
-            LabEquipment* temp = head;
-            bool isUnique = true;
-
-            while (temp != current) {
-                if (temp->category == current->category) {
-                    isUnique = false;
-                    break;
-                }
-                temp = temp->next;
-            }
-
-            if (isUnique) {
-                if (currentCategoryNumber == categoryNumber) {
-                    // Add equipment to the found category
-                    LabEquipment* newEquipment = new LabEquipment(name, current->category, model, serial,0);
-
-                    if (current->next == NULL) {
-                        // The category is the last one in the list
-                        current->next = newEquipment;
-                        newEquipment->prev = current;
-                        tail = newEquipment;
-                    }
-                    else {
-                        // Insert the new equipment between two categories
-                        newEquipment->next = current->next;
-                        newEquipment->prev = current;
-                        current->next->prev = newEquipment;
-                        current->next = newEquipment;
-                    }
-
-                    size++;
-                    return;
-                }
-
-                currentCategoryNumber++;
-            }
-
-            current = current->next;
-        }
-
-        // If the category is not found
-        cout << "Invalid category number. Equipment not added." << endl;
-    }
-    */
-  
 
     void deleteAt(int index) {
         if (head == nullptr || index < 0) {
