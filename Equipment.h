@@ -260,7 +260,7 @@ public:
         }
         cout << endl;
     }
-
+    /*
     void lendEquipment(const string& Snum, const string& studentName, const string& registerNumber, const string& lendDate) {
         LabEquipment* current = head;
 
@@ -279,6 +279,7 @@ public:
         // Equipment with the specified serial number not found
         cout << "Equipment with the specified serial number not found." << endl;
     }
+    */
 
     void printUniqueCategories() {
         LabEquipment* current = head;
