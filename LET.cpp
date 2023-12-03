@@ -148,13 +148,15 @@ int main() {
 
         case 12: 
             system("cls");
-            cout << "Here are the list of unique categories" << endl;
-            dll.printUniqueCategories();
-            cout << "Enter the category you want to filter :" << endl;
+            dll.printEquipmentByCategory(); 
+            //cout << "Here are the list of unique categories" << endl;
+            //dll.printUniqueCategories();
+            //cout << "Enter the category you want to filter :" << endl;
            // cin >> selectedCategory;
 
             //dll.filterByCategory(selectedCategory);
             break;
+                              
 
         default:
             cout << "Please enter a valid option key" << endl;

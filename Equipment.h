@@ -695,6 +695,64 @@ public:
         cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
     }
 
+    void printEquipmentByCategory() {
+        // Display unique categories
+        cout << "Unique Categories" << endl;
+        cout << "-----------------" << endl;
+        printUniqueCategories();
+
+        int categoryChoice;
+        cout << "Enter the category number to view equipment: ";
+        cin >> categoryChoice; cout << endl;
+
+        LabEquipment* current = head;
+        int currentCategory = 1;
+        bool found = false;
+
+        while (current != NULL) {
+            LabEquipment* temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                if (currentCategory == categoryChoice) {
+                    cout << "Equipment under category '" << current->category << "':" << endl << endl;
+                    found = true;
+
+                    // Print equipment under the selected category
+                    LabEquipment* categoryCurrent = head;
+                    while (categoryCurrent != NULL) {
+                        if (categoryCurrent->category == current->category) {
+                            cout << "Name          : " << categoryCurrent->name << endl;
+                            cout << "Category      : " << categoryCurrent->category << endl;
+                            cout << "Model         : " << categoryCurrent->model << endl;
+                            cout << "Serial Number : " << categoryCurrent->serial << endl;
+                            cout << "Availability  : " << (categoryCurrent->isLent ? "Not Available" : "Available") << endl;
+                            cout << endl;
+                        }
+                        categoryCurrent = categoryCurrent->next;
+                    }
+                }
+                currentCategory++;
+            }
+
+            current = current->next;
+        }
+
+        if (!found) {
+            cout << "Invalid category number selected." << endl;
+        }
+    }
+
+
+
 
 
 };
