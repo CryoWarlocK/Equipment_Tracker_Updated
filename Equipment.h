@@ -395,7 +395,7 @@ public:
         cout << "Enter equipment serial number: ";
         cin >> serial;
 
-        cout << "Enter availability (1 for true, 0 for false): ";
+        cout << "Enter availability ( 0 if available at the department, 1 if it is already lent): ";
         cin >> isLent;
 
         if (isLent) {
