@@ -49,11 +49,10 @@ int main() {
         cout << "5. Add Equipment with category" << endl;
         cout << "6. Delete an Equipment " << endl;
         cout << "7. Search Equipment " << endl;
-        cout << "8. Print all the equipments " << endl;
+        cout << "8. Print Equipment relevant to its category" << endl;
         cout << "9. Save data locally" << endl;
         cout << "10. Load data from local machine" << endl;
         cout << "11. Exit " << RESET_COLOR << endl;
-        cout << "12. Filter by category" << endl;
         
         cout << "_____________________________________________________________" << endl;
         cout << "Enter the number corresponding to your instruction : ";
@@ -125,7 +124,7 @@ int main() {
         case 8:
             system("cls");
             cout << "Print all the equipments option selected" << endl;
-            dll.print();
+            dll.printEquipmentByCategory();
             break;
         
 
@@ -144,18 +143,6 @@ int main() {
         case 11:
             system("cls");
             isRunning = false;  // Set the boolean variable to false to exit the loop
-            break;
-
-        case 12: 
-            system("cls");
-            cout << "Filter By Category option is selected" << endl << endl;
-            dll.printEquipmentByCategory(); 
-            //cout << "Here are the list of unique categories" << endl;
-            //dll.printUniqueCategories();
-            //cout << "Enter the category you want to filter :" << endl;
-           // cin >> selectedCategory;
-
-            //dll.filterByCategory(selectedCategory);
             break;
                               
 
