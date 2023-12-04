@@ -177,8 +177,8 @@ public:
     }
     // Sasini
     // Insert equipment details into the list
-    void insertLastWS(
-        const string& N, const string& cat, const string& mod, const string& Snum,
+    void insertLastWS(const
+        const string& N,  string& cat, const string& mod, const string& Snum,
         bool lent, const string& studentName, const string& registerNumber, const int& lDate, const int& lMonth, const int& lYear
     ) {
         // Create the node
@@ -669,20 +669,25 @@ public:
                     cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
                     cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
                         << current->lendDate << endl << endl;
+                    // Mark the equipment as available
+                    current->isLent = false;
+
+                    // Clear student data
+                    current->studentName = "NULL";
+                    current->studentRegisterNumber = "NULL";
+                    current->lendDate = INT_MIN;
+                    current->lendMonth = INT_MIN;
+                    current->lendYear = INT_MIN;
+
+                    cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
+                    return;
                 }
 
-                // Mark the equipment as available
-                current->isLent = false;
-
-                // Clear student data
-                current->studentName = "NULL";
-                current->studentRegisterNumber = "NULL";
-                current->lendDate = INT_MIN;
-                current->lendMonth = INT_MIN;
-                current->lendYear = INT_MIN;
-
-                cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
-                return;
+                else {
+                    cout << "The equipment has not been borrowed and is available in the laboratory." << endl;
+                    return;
+                
+                }
             }
             current = current->next;
         }
