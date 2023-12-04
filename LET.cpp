@@ -49,8 +49,9 @@ int main() {
         cout << " 7. Search Equipment " << endl;
         cout << " 8. Print Equipment Relevant to Its' Category" << endl;
         cout << " 9. Save Data locally" << endl;
-        cout << "10. Instructions for Using the Program" << endl;
-        cout << "11. Exit" << RESET_COLOR << endl;
+        cout << "10. Number of Equipments in a selected category." << endl;
+        cout << "11. Instructions for Using the Program" << endl;
+        cout << "12. Exit" << RESET_COLOR << endl;
         
 
         
@@ -123,6 +124,11 @@ int main() {
 
         case 10:
             system("cls");
+            dll.displayEquipmentCountByCategory();
+            break;
+
+        case 11:
+            system("cls");
             cout << "________________________________ INSTRUCTIONS ________________________________" << endl;
             cout << "                                                                              " << endl;
             cout << "~ Use the number corresponding to the menu item for interact with the program." << endl;
@@ -130,7 +136,7 @@ int main() {
             cout << "~ You can add dummy data by selecting option 1." << endl;
             break;
 
-        case 11:
+        case 12:
             system("cls");
             dll.saveToCSV(filename);
             isRunning = false;  // Set the boolean variable to false to exit the loop
