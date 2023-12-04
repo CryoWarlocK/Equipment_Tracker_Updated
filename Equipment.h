@@ -272,7 +272,9 @@ public:
 
             current = current->next;
         }
+
         cout << "\nPlease select a category from above list to add a equipment" << endl;
+
         cout << endl;
     }
     
@@ -551,7 +553,7 @@ public:
             current->next->prev = previous;
         }
         delete current;
-        //cout << "Deleted at index " << index << " successfully." << endl;
+        //cout << "Deleted at index " << index << " successfully." <<Â endl;
     }
 
     void deleteEquipmentBySerialNumber(const string& serialNumber) {
@@ -789,6 +791,65 @@ public:
         if (year >= 1 && year <= 9999)
             return year;
         return 0; // this is for invalid year 
+    }
+
+    void displayEquipmentCountByCategory() {
+        // Check if the list is empty
+        if (head == nullptr) {
+            cout << "The list is empty." << endl;
+            return;
+        }
+
+        // Print unique categories in a numbered list
+        printUniqueCategories();
+
+        int selectedCategory;
+        cout << "Please select a category number to view the equipment count: ";
+        cin >> selectedCategory;
+        cout << endl;
+
+        LabEquipment* current = head;
+        int currentCategory = 1;
+        bool found = false;
+
+        while (current != nullptr) {
+            LabEquipment* temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                if (currentCategory == selectedCategory) {
+                    cout << "Equipment count under category '" << current->category << "': ";
+
+                    // Count equipment under the selected category
+                    int equipmentCount = 0;
+                    LabEquipment* categoryCurrent = head;
+                    while (categoryCurrent != nullptr) {
+                        if (categoryCurrent->category == current->category) {
+                            equipmentCount++;
+                        }
+                        categoryCurrent = categoryCurrent->next;
+                    }
+
+                    cout << equipmentCount << endl;
+                    found = true;
+                }
+                currentCategory++;
+            }
+
+            current = current->next;
+        }
+
+        if (!found) {
+            cout << "Invalid category number selected." << endl;
+        }
     }
 
     
