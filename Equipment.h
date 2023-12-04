@@ -672,45 +672,52 @@ public:
     // Sasini
     void returnEquipment(const string& serialNumber) {
         LabEquipment* current = head;
+        bool found = false;
 
-        // Traverse the list to find the equipment by serial number
         while (current != nullptr) {
             if (current->serial == serialNumber) {
-                 // Found the equipment, display details
-                cout << "----------------------------" << endl;
-                cout << "--- Details of Equipment ---" << endl;
-                cout << "----------------------------" << endl << endl;
-                cout << "Name        : " << current->name << endl;
-                cout << "Category    : " << current->category << endl;
-                cout << "Model       : " << current->model << endl;
-                cout << "Avalability : " << (current->isLent ? "Not Available" : "Available") << endl << endl;
-                if (current->isLent == true) {
-                    cout << "Details of the students who have the equipment" << endl;
-                    cout << "Student Name               : " << current->studentName << endl;
-                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
-                    cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
-                        << current->lendDate << endl << endl;
+                found = true;
+                if (current->isLent) {
+                    cout << "----------------------------" << endl;
+                    cout << "--- Details of Equipment ---" << endl;
+                    cout << "----------------------------" << endl << endl;
+                    cout << "Name        : " << current->name << endl;
+                    cout << "Category    : " << current->category << endl;
+                    cout << "Model       : " << current->model << endl;
+                    cout << "Availability: " << (current->isLent ? "Not Available" : "Available") << endl << endl;
+                    if (current->isLent == true) {
+                        cout << "Details of the students who have the equipment" << endl;
+                        cout << "Student Name               : " << current->studentName << endl;
+                        cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
+                        cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
+                            << current->lendDate << endl << endl;
+                    }
+
+                    // Mark the equipment as available
+                    current->isLent = false;
+
+                    // Clear student data
+                    current->studentName = "NULL";
+                    current->studentRegisterNumber = "NULL";
+                    current->lendDate = INT_MIN;
+                    current->lendMonth = INT_MIN;
+                    current->lendYear = INT_MIN;
+
+                    cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
                 }
-
-                // Mark the equipment as available
-                current->isLent = false;
-
-                // Clear student data
-                current->studentName = "NULL";
-                current->studentRegisterNumber = "NULL";
-                current->lendDate = INT_MIN;
-                current->lendMonth = INT_MIN;
-                current->lendYear = INT_MIN;
-
-                cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
-                return;
+                else {
+                    cout << "Equipment with serial number '" << serialNumber << "' is not currently lent." << endl;
+                }
+                break;
             }
             current = current->next;
         }
 
-        // Equipment with the specified serial number not found
-        cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
+        if (!found) {
+            cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
+        }
     }
+
 
     // Hansi
 
