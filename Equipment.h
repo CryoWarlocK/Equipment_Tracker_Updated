@@ -286,7 +286,7 @@ public:
             current = current->next;
         }
 
-        cout << "\nPlease select a category from above list to add a equipment" << endl;
+        //cout << "\nPlease select a category from above list to add a equipment" << endl;
 
         cout << endl;
     }
