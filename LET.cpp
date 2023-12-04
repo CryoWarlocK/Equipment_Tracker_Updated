@@ -114,7 +114,6 @@ int main() {
             system("cls");
             cout << GREEN_COLOR << "Print All the Equipments Option Selected" << RESET_COLOR << endl;
             dll.printEquipmentByCategory();
-
             break;
 
         case 9: // Save data to CSV and exit
@@ -146,8 +145,3 @@ int main() {
     }
     return 0;
 }
-
-
-//find the time complexities
-//implement a seacrh method by serial number
-//implement a print method for one by one printing.
