@@ -4,7 +4,18 @@
 #include <iostream>
 #include <cstdlib>
 
-//8.16
+/* REFERENCES
+1. For clearing buffer and errors occured when we take multiple cin's 
+- https://stackoverflow.com/questions/5131647/why-would-we-call-cin-clear-and-cin-ignore-after-reading-input   
+- https://gist.github.com/DerexScript/d4220fdd40203978f8ba80c0010fa970
+
+2. For read and write with csv file
+- https://www.tutorialspoint.com/cplusplus/cpp_files_streams.htm
+// We only used this file to store the data in the doubly linked list when user choose exit or save, and read data and insert them
+back to the DLL when user choose load data.
+
+
+*/
 
 using namespace std;
 //Node in our code
@@ -139,12 +150,12 @@ public:
             string token;
             // Janitha
             // Parse the line using commas
-            string data[10];  // Assuming there are 8 fields in the CSV data
+            string data[10];  // We have 10 fields to load from csv file
             int index = 0;
             while (getline(ss, token, ',')) {
                 data[index++] = token;
                 if (index >=10) {
-                    break;  // Assuming there are 8 fields in the CSV data
+                    break;   
                 }
             }
            
@@ -152,12 +163,13 @@ public:
             if (index >= 10) {
                 insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], stoi(data[7]), stoi(data[8]), stoi(data[9]));
             }
+            //stoi used to convert the loaded string type csv data to integers to work with other methods
         }
 
         file.close();
     }
     // Janitha
-    // Method to save equipment data to a CSV file
+    // Method to save equipment data to the CSV file
     void saveToCSV(const string& filename) {
         ofstream file(filename);
         if (!file.is_open()) {
@@ -413,7 +425,7 @@ public:
 
     // Janitha
     void addEquipmentToSelectedCategory() {
-        // Check if the list is empty
+        // Check if the list is empty or not
         if (head == nullptr) {
             cout << "The list is empty." << endl;
             return;
