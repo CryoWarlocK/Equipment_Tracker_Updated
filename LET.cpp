@@ -34,7 +34,7 @@ int main() {
         int Opt;
         int selectedCategory = -1;
         cout << DARK_BLUE_COLOR <<"________________________________________________________________" << endl;
-        cout<<"------------- Lab Equipment Tracker Version 1.124 --------------" << endl;
+        cout<<"------------- Lab Equipment Tracker Version 1.141 --------------" << endl;
         cout << "----------------------------------------------------------------" << RESET_COLOR << endl;
         
         cout << "                                                              " << endl;
