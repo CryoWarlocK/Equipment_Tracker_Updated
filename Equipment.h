@@ -272,7 +272,9 @@ public:
 
             current = current->next;
         }
-        //cout << "Please select a category from above list to add a equipment" << endl;
+
+        cout << "\nPlease select a category from above list to add a equipment" << endl;
+
         cout << endl;
     }
     
@@ -382,7 +384,7 @@ public:
         cout << "Enter equipment category: ";
         cin >> category;
         clearInputBuffer();
-        cout << "Enter equipment serial number: ";
+        cout << "Enter equipment serial number: " << endl;
         cin >> serial;
         clearInputBuffer();
 
@@ -395,7 +397,7 @@ public:
         // Insert the new equipment
         insertLast(name, category, model, serial, 0);
 
-        cout << "Equipment added successfully." << endl;
+        cout << "\nEquipment added successfully." << endl;
     }
 
     bool isSerialNumberExists(const string& serial) {
@@ -442,7 +444,7 @@ public:
             current = current->next;
         }
 
-        cout << "Please select a category from the above list to add an equipment: ";
+        cout << "\n Please select a category from the above list to add an equipment: ";
         int selectedCategory;
         cin >> selectedCategory;
 
@@ -551,7 +553,7 @@ public:
             current->next->prev = previous;
         }
         delete current;
-        //cout << "Deleted at index " << index << " successfully." << endl;
+        //cout << "Deleted at index " << index << " successfully." <<Â endl;
     }
 
     void deleteEquipmentBySerialNumber(const string& serialNumber) {
@@ -693,7 +695,7 @@ public:
     void printEquipmentByCategory() {
         // Display unique categories
         cout << "Unique Categories" << endl;
-        cout << "-----------------" << endl;
+        cout << "-----------------\n" << endl;
         printUniqueCategories();
 
         int categoryChoice;
