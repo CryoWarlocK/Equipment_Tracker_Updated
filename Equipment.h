@@ -76,7 +76,7 @@ private:
     LabEquipment* tail;
     int size;
 
-
+    // Janitha
     // Helper function to write a LabEquipment object to a CSV file
     void writeEquipmentToCSV(ofstream& file, const LabEquipment* equipment) {
         file << equipment->name << "," << equipment->category << ","
@@ -101,7 +101,7 @@ public:
     LabEquipment* getTail() {
         return tail;
     }
-
+    // Janitha
     void clearList() {
         LabEquipment* current = head;
         LabEquipment* next;
@@ -116,12 +116,12 @@ public:
         tail = nullptr;
         size = 0;
     }
-
+    // Janitha
     void clearInputBuffer() {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
-
+    // Janitha
     // Load equipment data from a CSV file
     void loadFromCSV(const string& filename) {
         // Clear the existing list
@@ -137,17 +137,17 @@ public:
         while (getline(file, line)) {
             istringstream ss(line);
             string token;
-
+            // Janitha
             // Parse the line using commas
-            string data[10];  // Assuming there are 8 fields in your CSV data
+            string data[10];  // Assuming there are 8 fields in the CSV data
             int index = 0;
             while (getline(ss, token, ',')) {
                 data[index++] = token;
                 if (index >=10) {
-                    break;  // Assuming there are 8 fields in your CSV data
+                    break;  // Assuming there are 8 fields in the CSV data
                 }
             }
-
+           
             // Create a LabEquipment object from the CSV data
             if (index >= 10) {
                 insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], stoi(data[7]), stoi(data[8]), stoi(data[9]));
@@ -156,7 +156,7 @@ public:
 
         file.close();
     }
-
+    // Janitha
     // Method to save equipment data to a CSV file
     void saveToCSV(const string& filename) {
         ofstream file(filename);
@@ -175,7 +175,7 @@ public:
         file.close();
         cout << "Equipment data saved to '" << filename << "' successfully." << endl;
     }
-
+    // Sasini
     // Insert equipment details into the list
     void insertLastWS(
         const string& N, const string& cat, const string& mod, const string& Snum,
@@ -196,7 +196,7 @@ public:
             size++;
         }
     }
-
+    // Sasini
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
         //Create the node
         LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent);
@@ -213,7 +213,7 @@ public:
             size++;
         }
     }
-
+    // Hansika
     void print() {
         LabEquipment* current;
         current = head;
@@ -242,7 +242,7 @@ public:
         
     }
     
-    
+    // Hansika
     void printUniqueCategories() {
         // Check if the list is empty
         if (head == nullptr) {
@@ -278,7 +278,7 @@ public:
         cout << endl;
     }
     
-
+    // Sasini
     void lendEquipment() {
         string serialNum;
         cout << "Enter the serial number of the equipment you want to lend: ";
@@ -369,7 +369,7 @@ public:
         }
     }
    
-
+    // Janitha
 
     void addEquipment() {
         string name, model, category, serial;
@@ -411,7 +411,7 @@ public:
         return false; // Serial number does not exist
     }
 
-
+    // Janitha
     void addEquipmentToSelectedCategory() {
         // Check if the list is empty
         if (head == nullptr) {
@@ -451,6 +451,7 @@ public:
         current = head;
         int currentCategoryNumber = 1;
 
+      
         // Find the category corresponding to the selected category number
         while (current != nullptr) {
             LabEquipment* temp = head;
@@ -516,7 +517,7 @@ public:
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
     }
-
+    // Hansika
     void deleteAt(int index) {
         if (head == nullptr || index < 0) {
             cout << "Invalid operation: List is empty or index is negative." << endl;
@@ -555,7 +556,7 @@ public:
         delete current;
         //cout << "Deleted at index " << index << " successfully." << endl;
     }
-
+    // Hansika
     void deleteEquipmentBySerialNumber(const string& serialNumber) {
         LabEquipment* current = head;
         int index = 0;
@@ -612,7 +613,7 @@ public:
         cout << "\nEquipment with serial number '" << serialNumber << "' not found." << endl;
     }
 
-    
+   // Hansika
 
     // Method to search for an equipment by serial number
     void searchBySerial(const string& serialNumber) {
@@ -649,7 +650,7 @@ public:
             cout << "Equipment with the specified serial number not found." << endl;
         }
     }
-
+    // Sasini
     void returnEquipment(const string& serialNumber) {
         LabEquipment* current = head;
 
@@ -691,7 +692,7 @@ public:
         // Equipment with the specified serial number not found
         cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
     }
-
+    // Hansika
     void printEquipmentByCategory() {
         // Display unique categories
         cout << "Unique Categories" << endl;
@@ -748,7 +749,7 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
-    
+    // Sasini
     bool isValidDate(int day, int month, int year) {
         if (validateYear(year) && validateMonth(month) && validateDay(day, month, year)) {
             return true;
