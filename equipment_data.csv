@@ -1,21 +1,42 @@
-Function Generator,Signal Generator,Rigol DG1022Z,FG-45678,0,NULL,NULL,-1,-1,-1
+Function Generator,Signal,Rigol DG1022Z,FG-45678,0,NULL,NULL,-1,-1,-1
 Oscilloscope,Measurement,Rigol DS1054Z,MS-12345,1,John Doe,EG/2022/1234,1,12,2022
 Multimeter,Measurement,Fluke 87V,MM-67890,0,NULL,NULL,-1,-1,-1
-Power Supply,Power Supply,Keysight E36313A,PS-98765,0,NULL,NULL,-1,-1,-1
-Microscope,Biology,Leica DM750,MB-54321,1,Jane Smith,EG/2023/5678,15,5,2023
-Centrifuge,Chemistry,Eppendorf 5424,CC-24680,0,NULL,NULL,-1,-1,-1
-Incubator,Biology,Thermo Fisher Scientific 370,IB-13579,0,NULL,NULL,-1,-1,-1
-Spectrophotometer,Chemistry,Shimadzu UV-1800,SC-97531,1,Robert Johnson,EG/2022/9876,8,3,2022
-Hotplate Stirrer,Chemistry,Corning PC-420D,HS-24601,0,NULL,NULL,-1,-1,-1
-pH Meter,Chemistry,Mettler Toledo SevenCompact,S-86420,1,Alice Brown,EG/2023/5678,21,7,2023
-Pipette,Biology,Eppendorf Research plus,PB-12346,0,NULL,NULL,-1,-1,-1
-Magnetic Stirrer,Chemistry,IKA C-MAG HS7,MS-78901,1,David Lee,EG/2022/5432,4,9,2022
-Fume Hood,Chemistry,Labconco Protector XStream,FH-35791,0,NULL,NULL,-1,-1,-1
-Microplate Reader,Biology,BioTek Synergy H1,MR-24680,1,Susan White,EG/2023/1357,12,2,2023
-Thermal Cycler,Biology,Applied Biosystems Veriti,TC-97531,0,NULL,NULL,-1,-1,-1
+Power Supply,Power,Keysight E36313A,PS-98765,0,NULL,NULL,-1,-1,-1
+Microscope,Motors,Leica DM750,MB-54321,1,Jane Smith,EG/2023/5678,15,5,2023
+Centrifuge,Tools,Eppendorf 5424,CC-24680,0,NULL,NULL,-1,-1,-1
+Incubator,Motors,Thermo Fisher Scientific 370,IB-13579,0,NULL,NULL,-1,-1,-1
+Spectrophotometer,Signal,Shimadzu UV-1800,SC-97531,1,Robert Johnson,EG/2022/9876,8,3,2022
+Hotplate Stirrer,Tools,Corning PC-420D,HS-24601,0,NULL,NULL,-1,-1,-1
+pH Meter,Measurement,Mettler Toledo SevenCompact,S-86420,1,Alice Brown,EG/2023/5678,21,7,2023
+Pipette,Tools,Eppendorf Research plus,PB-12346,0,NULL,NULL,-1,-1,-1
+Magnetic Stirrer,Tools,IKA C-MAG HS7,MS-78901,1,David Lee,EG/2022/5432,4,9,2022
+Fume Hood,Tools,Labconco Protector XStream,FH-35791,0,NULL,NULL,-1,-1,-1
+Microplate Reader,Measurement,BioTek Synergy H1,MR-24680,1,Susan White,EG/2023/1357,12,2,2023
+Thermal Cycler,Signal,Applied Biosystems Veriti,TC-97531,0,NULL,NULL,-1,-1,-1
 Magnetic Field Meter,Physics,Lake Shore 475,MM-86420,1,Michael Taylor,EG/2022/9876,5,6,2022
-Analytical Balance,Chemistry,Mettler Toledo XS205,AB-13579,0,NULL,NULL,-1,-1,-1
-Shaker,Biology,Heidolph Titramax 1000,SB-97531,1,Linda Davis,EG/2023/5678,17,11,2023
-Ultrasonic Cleaner,Chemistry,Branson CPX-952-317R,UC-97531,0,NULL,NULL,-1,-1,-1
-Water Bath,Chemistry,Julabo TW20,WB-24680,1,Chris Evans,EG/2022/2468,9,4,2022
-Sterilizer,Biology,Tuttnauer 2540M,ST-13579,0,NULL,NULL,-1,-1,-1
+Analytical Balance,Measurement,Mettler Toledo XS205,AB-13579,0,NULL,NULL,-1,-1,-1
+Shaker,Tools,Heidolph Titramax 1000,SB-97531,1,Linda Davis,EG/2023/5678,17,11,2023
+Ultrasonic Cleaner,Tools,Branson CPX-952-317R,UC-97531,0,NULL,NULL,-1,-1,-1
+Water Bath,Tools,Julabo TW20,WB-24680,1,Chris Evans,EG/2022/2468,9,4,2022
+Sterilizer,Tools,Tuttnauer 2540M,ST-13579,0,NULL,NULL,-1,-1,-1
+Function Generator,Signal,Rigol DG1022Z,FG-11111,0,NULL,NULL,-1,-1,-1
+Oscilloscope,Measurement,Rigol DS1054Z,MS-22222,1,John Doe,EG/2022/3333,2,11,2022
+Multimeter,Measurement,Fluke 87V,MM-33333,0,NULL,NULL,-1,-1,-1
+Power Supply,Power,Keysight E36313A,PS-44444,0,NULL,NULL,-1,-1,-1
+Microscope,Motors,Leica DM750,MB-55555,1,Jane Smith,EG/2023/6666,16,6,2023
+Centrifuge,Tools,Eppendorf 5424,CC-77777,0,NULL,NULL,-1,-1,-1
+Incubator,Motors,Thermo Fisher Scientific 370,IB-88888,0,NULL,NULL,-1,-1,-1
+Spectrophotometer,Signal,Shimadzu UV-1800,SC-99999,1,Robert Johnson,EG/2022/0000,9,4,2022
+Hotplate Stirrer,Tools,Corning PC-420D,HS-00001,0,NULL,NULL,-1,-1,-1
+pH Meter,Measurement,Mettler Toledo SevenCompact,S-00002,1,Alice Brown,EG/2023/1111,22,8,2023
+Pipette,Tools,Eppendorf Research plus,PB-22222,0,NULL,NULL,-1,-1,-1
+Magnetic Stirrer,Tools,IKA C-MAG HS7,MS-33333,1,David Lee,EG/2022/4444,5,10,2022
+Fume Hood,Tools,Labconco Protector XStream,FH-55555,0,NULL,NULL,-1,-1,-1
+Microplate Reader,Measurement,BioTek Synergy H1,MR-66666,1,Susan White,EG/2023/7777,18,12,2023
+Thermal Cycler,Signal,Applied Biosystems Veriti,TC-88888,0,NULL,NULL,-1,-1,-1
+Magnetic Field Meter,Physics,Lake Shore 475,MM-99999,1,Michael Taylor,EG/2022/0000,6,7,2022
+Analytical Balance,Measurement,Mettler Toledo XS205,AB-11111,0,NULL,NULL,-1,-1,-1
+Shaker,Tools,Heidolph Titramax 1000,SB-22222,1,Linda Davis,EG/2023/3333,18,11,2023
+Ultrasonic Cleaner,Tools,Branson CPX-952-317R,UC-44444,0,NULL,NULL,-1,-1,-1
+Water Bath,Tools,Julabo TW20,WB-55555,1,Chris Evans,EG/2022/6666,10,5,2022
+Sterilizer,Tools,Tuttnauer 2540M,ST-77777,0,NULL,NULL,-1,-1,-1
