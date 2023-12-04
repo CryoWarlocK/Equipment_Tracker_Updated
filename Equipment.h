@@ -17,7 +17,9 @@ public:
     bool isLent;
     string studentName;
     string studentRegisterNumber;
-    string lendDate;
+    int lendDate;
+    int lendMonth;
+    int lendYear;
    // string* student = new string[3];
     LabEquipment* next;
     LabEquipment* prev;
@@ -28,9 +30,11 @@ public:
         model = "";
         serial = "";
         isLent = false;
-        studentName = "-1";
-        studentRegisterNumber = "-1";
-        lendDate = "-1";
+        studentName = "NULL";
+        studentRegisterNumber = "NULL";
+        lendDate = INT_MIN;
+        lendMonth = INT_MIN;
+        lendYear = INT_MIN;
         next = nullptr;
         prev = nullptr;
     }
@@ -41,14 +45,16 @@ public:
         model = mod;
         serial = Snum;
         isLent = lent;
-        studentName = "-1";
-        studentRegisterNumber = "-1";
-        lendDate = "-1";
+        studentName = "NULL";
+        studentRegisterNumber = "NULL";
+        lendDate = INT_MIN;
+        lendMonth = INT_MIN;
+        lendYear = INT_MIN;
         next = nullptr;
         prev = nullptr;
     }
 
-    LabEquipment(string N, string cat, string mod, string Snum, bool lent, string sName, string sRegNum, string lDate) {
+    LabEquipment(string N, string cat, string mod, string Snum, bool lent, string sName, string sRegNum, int lDate, int lMonth, int lYear) {
         name = N;
         category = cat;
         model = mod;
@@ -57,6 +63,8 @@ public:
         studentName = sName;
         studentRegisterNumber = sRegNum;
         lendDate = lDate;
+        lendMonth = lMonth;
+        lendYear = lYear;
         next = nullptr;
         prev = nullptr;
     }
@@ -74,7 +82,8 @@ private:
         file << equipment->name << "," << equipment->category << ","
             << equipment->model << "," << equipment->serial << ","
             << equipment->isLent << "," << equipment->studentName << ","
-            << equipment->studentRegisterNumber << "," << equipment->lendDate << "\n";
+            << equipment->studentRegisterNumber << "," 
+            << equipment->lendDate <<"," << equipment->lendMonth << "," <<equipment->lendYear << "\n";
     }
 
 
@@ -130,18 +139,18 @@ public:
             string token;
 
             // Parse the line using commas
-            string data[8];  // Assuming there are 8 fields in your CSV data
+            string data[10];  // Assuming there are 8 fields in your CSV data
             int index = 0;
             while (getline(ss, token, ',')) {
                 data[index++] = token;
-                if (index >= 8) {
+                if (index >=10) {
                     break;  // Assuming there are 8 fields in your CSV data
                 }
             }
 
             // Create a LabEquipment object from the CSV data
-            if (index >= 8) {
-                insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], data[7]);
+            if (index >= 10) {
+                insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], stoi(data[7]), stoi(data[8]), stoi(data[9]));
             }
         }
 
@@ -170,10 +179,10 @@ public:
     // Insert equipment details into the list
     void insertLastWS(
         const string& N, const string& cat, const string& mod, const string& Snum,
-        bool lent, const string& studentName, const string& registerNumber, const string& lendDate
+        bool lent, const string& studentName, const string& registerNumber, const int& lDate, const int& lMonth, const int& lYear
     ) {
         // Create the node
-        LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent, studentName, registerNumber, lendDate);
+        LabEquipment* temp = new LabEquipment(N, cat, mod, Snum, lent, studentName, registerNumber, lDate, lMonth, lYear);
 
         if (head == NULL) {
             head = temp;
@@ -290,9 +299,10 @@ public:
 
                 if (current->isLent) {
                     cout << "Details of the student who has the equipment" << endl;
-                    cout << "Student Name               : " << current->studentName << endl;
-                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
-                    cout << "Date of the record         : " << current->lendDate << endl << endl;
+                    cout << "Student Name                   : " << current->studentName << endl;
+                    cout << "Student Register Number        : " << current->studentRegisterNumber << endl;
+                    cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear <<"-" <<current->lendMonth<< "-" 
+                        << current->lendDate<< endl << endl;
                 }
 
                 if (!current->isLent) {
@@ -302,7 +312,6 @@ public:
                     cin >> confirm;
 
                     if (confirm == 'y' || confirm == 'Y') {
-                        string lendDate;
                         // Get student details
                         clearInputBuffer();
                         cout << "Enter Student name: ";
@@ -310,15 +319,30 @@ public:
                         cout << "Enter Student's register number: ";
                         cin >> current->studentRegisterNumber;
                         clearInputBuffer();
-                        cout << "Enter the lending date (YYYY-MM-DD): ";
-                        cin >> lendDate;
+                        cout << "Enter the lending Day (DD): ";
+                        int lDate;
+                        cin >> lDate;
+                        clearInputBuffer();
+                        cout << "Enter the lending Month (MM): ";
+                        int lMonth;
+                        cin >> lMonth;
+                        clearInputBuffer();
+                        cout << "Enter the lending Year (YYYY): ";
+                        int lYear;
+                        cin >> lYear;
+                        clearInputBuffer();
 
                         // Validate the lend date 
-                        // (You can add your validation logic here)
+                        if (!isValidDate(lDate, lMonth, lYear)) {
+                            cout << "Invalid date. Equipment not borrowed." << endl;
+                            return;
+                        }
 
                         // Update equipment status
                         current->isLent = true;
-                        current->lendDate = lendDate;
+                        current->lendDate = lDate;
+                        current->lendMonth = lMonth;
+                        current->lendYear = lYear;
 
                         cout << "Equipment borrowed successfully." << endl;
                     }
@@ -342,6 +366,7 @@ public:
             cout << "Equipment with the specified serial number not found." << endl;
         }
     }
+   
 
 
     void addEquipment() {
@@ -361,12 +386,29 @@ public:
         cin >> serial;
         clearInputBuffer();
 
-        
+        // Check if the serial number already exists
+        if (isSerialNumberExists(serial)) {
+            cout << "Equipment with the specified serial number already exists." << endl;
+            return;
+        }
+
+        // Insert the new equipment
         insertLast(name, category, model, serial, 0);
-        
 
         cout << "Equipment added successfully." << endl;
     }
+
+    bool isSerialNumberExists(const string& serial) {
+        LabEquipment* current = head;
+        while (current != nullptr) {
+            if (current->serial == serial) {
+                return true; // Serial number already exists
+            }
+            current = current->next;
+        }
+        return false; // Serial number does not exist
+    }
+
 
     void addEquipmentToSelectedCategory() {
         // Check if the list is empty
@@ -435,6 +477,12 @@ public:
                     cout << "Enter equipment serial: ";
                     cin >> serial;
                     clearInputBuffer();
+
+                    // Check if the serial number already exists
+                    if (isSerialNumberExists(serial)) {
+                        cout << "Equipment with the specified serial number already exists." << endl;
+                        return;
+                    }
 
                     LabEquipment* newEquipment = new LabEquipment(name, current->category, model, serial, 0);
 
@@ -525,7 +573,8 @@ public:
                     cout << "Details of the students who have the equipment" << endl;
                     cout << "Student Name               : " << current->studentName << endl;
                     cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
-                    cout << "Date of the record         : " << current->lendDate << endl <<endl;
+                    cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
+                        << current->lendDate << endl << endl;
                 }
                 
 
@@ -583,7 +632,8 @@ public:
                     cout << "Details of the students who have the equipment" << endl;
                     cout << "Student Name               : " << current->studentName << endl;
                     cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
-                    cout << "Date of the record         : " << current->lendDate << endl << endl;
+                    cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
+                        << current->lendDate << endl << endl;
                 }
 
                 found = true;
@@ -616,16 +666,19 @@ public:
                     cout << "Details of the students who have the equipment" << endl;
                     cout << "Student Name               : " << current->studentName << endl;
                     cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
-                    cout << "Date of the record         : " << current->lendDate << endl << endl;
+                    cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
+                        << current->lendDate << endl << endl;
                 }
 
                 // Mark the equipment as available
                 current->isLent = false;
 
                 // Clear student data
-                current->studentName = "-1";
-                current->studentRegisterNumber = "-1";
-                current->lendDate = "-1";
+                current->studentName = "NULL";
+                current->studentRegisterNumber = "NULL";
+                current->lendDate = INT_MIN;
+                current->lendMonth = INT_MIN;
+                current->lendYear = INT_MIN;
 
                 cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
                 return;
@@ -693,4 +746,53 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
+    
+    bool isValidDate(int day, int month, int year) {
+        if (validateYear(year) && validateMonth(month) && validateDay(day, month, year)) {
+            return true;
+        }
+        return false;
+    }
+
+    int validateDay(int day, int month, int year) {
+        int maxDay;
+        if (month == 4 || month == 6 || month == 9 || month == 11) {
+            maxDay = 30;
+        }
+        else if (month == 2 && isLeapYear(year)) {
+            maxDay = 29;
+        }
+        else if (month == 2 && !isLeapYear(year)) {
+            maxDay = 28;
+        }
+        else {
+            maxDay = 31;
+        }
+
+        if (day >= 1 && day <= maxDay) {
+            return day;
+        }
+        return 0; // This is for invalid day
+    }
+
+    int validateMonth(int month) {
+        if (month >= 1 && month <= 12)
+            return month;
+        return 0; // this is for invalid Month
+    }
+
+    bool isLeapYear(int year) {
+        return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
+    }
+
+    int validateYear(int year) {
+        if (year >= 1 && year <= 9999)
+            return year;
+        return 0; // this is for invalid year 
+    }
+
+    
+    
+
+    
 };
