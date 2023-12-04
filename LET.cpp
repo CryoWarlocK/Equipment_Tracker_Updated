@@ -29,7 +29,7 @@ int main() {
         cout << "                                                              " << endl;
         cout << "                    ----- MENU -----" << endl;
         cout << "                                                              " << endl;
-        cout << " 1. Load data from local machine" << endl;
+        cout << LIGHTBLUE_COLOR <<  " 1. Load data from local machine" << endl;
         cout << " 2. Lend Equipment"<< endl;
         cout << " 3. Return Equipment"<< endl;
         cout << " 4. Add Equipment by selecting existing category " << endl;

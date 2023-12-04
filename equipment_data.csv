@@ -1,21 +1,21 @@
-Oscilloscope,Measurement,Tektronix TDS210,OS-12345,1,-1,-1,-1
-Multimeter,Measurement,Fluke 87V,MM-24680,1,John Doe,EG/2022/1234,2022-11-15
-Power Supply,Power,Agilent E3631A,PS-13579,1,Janitha,EG/2021/4599,2023-12-03
-Spectrum Analyzer,Signal Analyzer,Rohde & Schwarz FSW,SA-54321,1,Jane Smith,EG/2021/5678,2022-01-20
-Digital Logic Analyzer,Measurement,Keysight MSO-X 3034T,DL-98765,1,Hansika,EG/2021/4604,2023-12-03
-Signal Generator,Signal Generator,Keysight 33522A,SG-11223,1,Alice Johnson,EG/2023/9876,2022-08-05
-Function Generator,Signal Generator,Rigol DG1022Z,FG-45678,1,Karunathilake,EG/2021/4604,2023-10-29
-Digital Oscilloscope,Measurement,Tektronix MSO2014B,OS-13579,1,Bob Williams,EG/2020/3456,2022-03-10
-Voltage Regulator,Power,LM317,VR-98765,0,-1,-1,-1
-Signal Generator,Signal Generator,B&K Precision 4040A,SG-24680,1,Emily Davis,EG/2022/6543,2022-06-25
-Logic Probe,Measurement,HP 1043A,LP-11223,0,-1,-1,-1
-Power Supply,Power,Agilent E3646A,PS-54321,1,Michael Brown,EG/2021/7890,2022-09-18
-Waveform Generator,Signal Generator,Teledyne LeCroy ArbStudio 1102,WG-13579,0,-1,-1,-1
-Frequency Counter,Measurement,Fluke 725,FC-98765,1,Sarah Wilson,EG/2023/2345,2022-04-30
-DC Motor,Motors,NEMA 23,DM-11223,1,Janiya,EG/2021/4599,2023-12-03
-Soldering Station,Tools,Hakko FX-888D,SS-24680,1,David Miller,EG/2020/8765,2022-02-14
-Logic Analyzer,Measurement,Agilent 16802A,LA-13579,0,-1,-1,-1
-Capacitance Meter,Measurement,Keysight U1733C,CM-98765,1,Olivia Taylor,EG/2022/4321,2022-07-12
-Digital Power Supply,Power,Rigol DP832A,DPS-11223,0,-1,-1,-1
-Capacitance Meter,Measurement,Keysight U1733C,CM-98765,1,Ethan Moore,EG/2021/5678,2022-11-02
-Digital Power Supply,Power,Rigol DP832A,DPS-11223,0,-1,-1,-1
+Function Generator,Signal Generator,Rigol DG1022Z,FG-45678,0,NULL,NULL,-1,-1,-1
+Oscilloscope,Measurement,Rigol DS1054Z,MS-12345,1,John Doe,EG/2022/1234,1,12,2022
+Multimeter,Measurement,Fluke 87V,MM-67890,0,NULL,NULL,-1,-1,-1
+Power Supply,Power Supply,Keysight E36313A,PS-98765,0,NULL,NULL,-1,-1,-1
+Microscope,Biology,Leica DM750,MB-54321,1,Jane Smith,EG/2023/5678,15,5,2023
+Centrifuge,Chemistry,Eppendorf 5424,CC-24680,0,NULL,NULL,-1,-1,-1
+Incubator,Biology,Thermo Fisher Scientific 370,IB-13579,0,NULL,NULL,-1,-1,-1
+Spectrophotometer,Chemistry,Shimadzu UV-1800,SC-97531,1,Robert Johnson,EG/2022/9876,8,3,2022
+Hotplate Stirrer,Chemistry,Corning PC-420D,HS-24601,0,NULL,NULL,-1,-1,-1
+pH Meter,Chemistry,Mettler Toledo SevenCompact,S-86420,1,Alice Brown,EG/2023/5678,21,7,2023
+Pipette,Biology,Eppendorf Research plus,PB-12346,0,NULL,NULL,-1,-1,-1
+Magnetic Stirrer,Chemistry,IKA C-MAG HS7,MS-78901,1,David Lee,EG/2022/5432,4,9,2022
+Fume Hood,Chemistry,Labconco Protector XStream,FH-35791,0,NULL,NULL,-1,-1,-1
+Microplate Reader,Biology,BioTek Synergy H1,MR-24680,1,Susan White,EG/2023/1357,12,2,2023
+Thermal Cycler,Biology,Applied Biosystems Veriti,TC-97531,0,NULL,NULL,-1,-1,-1
+Magnetic Field Meter,Physics,Lake Shore 475,MM-86420,1,Michael Taylor,EG/2022/9876,5,6,2022
+Analytical Balance,Chemistry,Mettler Toledo XS205,AB-13579,0,NULL,NULL,-1,-1,-1
+Shaker,Biology,Heidolph Titramax 1000,SB-97531,1,Linda Davis,EG/2023/5678,17,11,2023
+Ultrasonic Cleaner,Chemistry,Branson CPX-952-317R,UC-97531,0,NULL,NULL,-1,-1,-1
+Water Bath,Chemistry,Julabo TW20,WB-24680,1,Chris Evans,EG/2022/2468,9,4,2022
+Sterilizer,Biology,Tuttnauer 2540M,ST-13579,0,NULL,NULL,-1,-1,-1
