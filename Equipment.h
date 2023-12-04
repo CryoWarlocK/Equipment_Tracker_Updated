@@ -18,7 +18,7 @@ back to the DLL when user choose load data.
 */
 
 using namespace std;
-//Node in our code
+//Node in our code to represent individual lab equipment
 class LabEquipment {
 public:
     string name;
@@ -35,7 +35,8 @@ public:
     LabEquipment* next;
     LabEquipment* prev;
 
-    LabEquipment() {
+    //default constructor
+    LabEquipment() { // Initialization of member variables to initial values
         name = "";
         category = "";
         model = "";
@@ -50,7 +51,13 @@ public:
         prev = nullptr;
     }
 
-    LabEquipment(string N, string cat, string mod, string Snum, bool lent) {
+    /*parameterized constructor for creating a lab equipment with basic details, like
+    name, category, model, serial number, and lending status
+
+    initializes the member variables with the provided values and sets the other variables
+    to initial values.*/
+
+    LabEquipment(string N, string cat, string mod, string Snum, bool lent) { 
         name = N;
         category = cat;
         model = mod;
@@ -64,6 +71,9 @@ public:
         next = nullptr;
         prev = nullptr;
     }
+
+    /*This constructor initializes a lab equipment item with all available details,
+    including information about the borrower and lending date.*/
 
     LabEquipment(string N, string cat, string mod, string Snum, bool lent, string sName, string sRegNum, int lDate, int lMonth, int lYear) {
         name = N;
@@ -225,28 +235,30 @@ public:
             size++;
         }
     }
-    // Hansika
+    // Hansi
+    // Print function
     void print() {
         LabEquipment* current;
-        current = head;
-        if (current == NULL) {
+        current = head; // initialize current with the head of the linked list
+        if (current == NULL) {//check whther the list is empty
             cout << "--------------------------------------------------------------------" << endl;
             cout << "Oops! It's seems like you don't have and data to print" << endl;
             cout << "Please insert equipment to the list first using add equipment option" << endl;
             cout << "Otherwise you can load sample data from load from local machine option" << endl;
-        }
-        else {
-            while (current != NULL)
+        }// if not empty traverse through the list and print equipment details
+        else 
+        {
+            while (current != NULL)//loop iterates until current = NULL
             {
 
                 cout << "Name          : " << current->name << endl;
                 cout << "Category      : " << current->category << endl;
                 cout << "Model         : " << current->model << endl;
                 cout << "Serial Number : " << current->serial << endl;
-                cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;
+                cout << "Availability  : " << (current->isLent ? "Not Available" : "Available") << endl;// current->isLent is true - not available 
                 cout << endl;
                 cout << endl;
-                current = current->next;
+                current = current->next;// after printing details of one node move current to the next node
             }
             cout << endl;
 
@@ -254,22 +266,23 @@ public:
         
     }
     
-    // Hansika
+    // Hansi
+    //Function to print unique categories found in the list labEquipment
+    
     void printUniqueCategories() {
-        // Check if the list is empty
-        if (head == nullptr) {
+        if (head == nullptr) { // Check whether the list is empty
             cout << "The list is empty." << endl;
             return;
         }
         LabEquipment* current = head;
         LabEquipment* temp;
-        int categoryNumber = 1;
+        int categoryNumber = 1; // to count unique categories
 
-        while (current != NULL) {
+        while (current != NULL) { // traverse through the list until current = null
             temp = head;
             bool isUnique = true;
 
-            while (temp != current) {
+            while (temp != current) { // checking the uniqueness of each category. 
                 if (temp->category == current->category) {
                     isUnique = false;
                     break;
@@ -285,7 +298,7 @@ public:
             current = current->next;
         }
 
-        cout << "\nPlease select a category from above list to add a equipment" << endl;
+        //cout << "\nPlease select a category from above list to add a equipment" << endl;
 
         cout << endl;
     }
@@ -529,9 +542,12 @@ public:
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
     }
-    // Hansika
-    void deleteAt(int index) {
-        if (head == nullptr || index < 0) {
+
+    // Hansi
+    // Function to delete an equipment at a given index
+
+    void deleteAt(int index) { // check for invalid conditions
+        if (head == nullptr || index < 0) { // Ensuring that the list is non empty and index is non negative
             cout << "Invalid operation: List is empty or index is negative." << endl;
             return;
         }
@@ -539,7 +555,7 @@ public:
         LabEquipment* current = head;
         LabEquipment* previous = nullptr;
 
-        if (index == 0) {
+        if (index == 0) { // deletion at index 0
             head = head->next;
             if (head != nullptr) {
                 head->prev = nullptr;
@@ -549,32 +565,34 @@ public:
             return;
         }
 
-        int count = 0;
-        while (current != nullptr && count < index) {
+        int count = 0; // to keep track of the current position of the list
+        while (current != nullptr && count < index) { // Traverse the list until reaching the desired index
             previous = current;
             current = current->next;
             count++;
         }
 
-        if (current == nullptr) {
+        if (current == nullptr) { // handles the case when index is out of range
             cout << "Index out of range." << endl;
             return;
         }
 
         previous->next = current->next;
         if (current->next != nullptr) {
-            current->next->prev = previous;
+            current->next->prev = previous;//ensures the linkage of the nodes remains intact after the deletion
         }
         delete current;
         //cout << "Deleted at index " << index << " successfully." << endl;
     }
+
+
     // Hansika
     void deleteEquipmentBySerialNumber(const string& serialNumber) {
         LabEquipment* current = head;
-        int index = 0;
+        int index = 0; // counter to keep track of the node being checked
 
         // Traverse the list to find the equipment by serial number
-        while (current != nullptr) {
+        while (current != nullptr) { // traverse through the loop until null is reached
             if (current->serial == serialNumber) {
                 // Found the equipment, display details
                 cout << "----------------------------" << endl;
@@ -625,9 +643,10 @@ public:
         cout << "\nEquipment with serial number '" << serialNumber << "' not found." << endl;
     }
 
+
    // Hansika
 
-    // Method to search for an equipment by serial number
+   // Method to search for an equipment by serial number
     void searchBySerial(const string& serialNumber) {
         LabEquipment* current = head;
         bool found = false;
@@ -665,46 +684,56 @@ public:
     // Sasini
     void returnEquipment(const string& serialNumber) {
         LabEquipment* current = head;
+        bool found = false;
 
-        // Traverse the list to find the equipment by serial number
         while (current != nullptr) {
             if (current->serial == serialNumber) {
-                 // Found the equipment, display details
-                cout << "----------------------------" << endl;
-                cout << "--- Details of Equipment ---" << endl;
-                cout << "----------------------------" << endl << endl;
-                cout << "Name        : " << current->name << endl;
-                cout << "Category    : " << current->category << endl;
-                cout << "Model       : " << current->model << endl;
-                cout << "Avalability : " << (current->isLent ? "Not Available" : "Available") << endl << endl;
-                if (current->isLent == true) {
-                    cout << "Details of the students who have the equipment" << endl;
-                    cout << "Student Name               : " << current->studentName << endl;
-                    cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
-                    cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
-                        << current->lendDate << endl << endl;
+                found = true;
+                if (current->isLent) {
+                    cout << "----------------------------" << endl;
+                    cout << "--- Details of Equipment ---" << endl;
+                    cout << "----------------------------" << endl << endl;
+                    cout << "Name        : " << current->name << endl;
+                    cout << "Category    : " << current->category << endl;
+                    cout << "Model       : " << current->model << endl;
+                    cout << "Availability: " << (current->isLent ? "Not Available" : "Available") << endl << endl;
+                    if (current->isLent == true) {
+                        cout << "Details of the students who have the equipment" << endl;
+                        cout << "Student Name               : " << current->studentName << endl;
+                        cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
+                        cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
+                            << current->lendDate << endl << endl;
+                    }
+
+                    // Mark the equipment as available
+                    current->isLent = false;
+
+                    // Clear student data
+                    current->studentName = "NULL";
+                    current->studentRegisterNumber = "NULL";
+                    current->lendDate = INT_MIN;
+                    current->lendMonth = INT_MIN;
+                    current->lendYear = INT_MIN;
+
+                    cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
                 }
-
-                // Mark the equipment as available
-                current->isLent = false;
-
-                // Clear student data
-                current->studentName = "NULL";
-                current->studentRegisterNumber = "NULL";
-                current->lendDate = INT_MIN;
-                current->lendMonth = INT_MIN;
-                current->lendYear = INT_MIN;
-
-                cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
-                return;
+                else {
+                    cout << "Equipment with serial number '" << serialNumber << "' is not currently lent." << endl;
+                }
+                break;
             }
             current = current->next;
         }
 
-        // Equipment with the specified serial number not found
-        cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
+        if (!found) {
+            cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
+        }
     }
-    // Hansika
+
+
+    // Hansi
+
+    // Print Equipments reated to specified categories 
     void printEquipmentByCategory() {
         // Display unique categories
         cout << "Unique Categories" << endl;
@@ -715,11 +744,11 @@ public:
         cout << "Enter the category number to view the equipment under choosen category: ";
         cin >> categoryChoice;
         cout << endl;
-
+        //Traverse the equipment list
         LabEquipment* current = head;
         int currentCategory = 1;
         bool found = false;
-
+        //idenitify unique categories
         while (current != NULL) {
             LabEquipment* temp = head;
             bool isUnique = true;
@@ -756,7 +785,7 @@ public:
 
             current = current->next;
         }
-
+        //handles invalid user inputs
         if (!found) {
             cout << "Invalid category number selected." << endl;
         }
