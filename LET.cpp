@@ -61,20 +61,20 @@ int main() {
         switch (Opt) {
         case 1: // Load data from CSV
             system("cls");
-            cout << PINK_COLOR<< "Local Data Successfully Loaded"<< PINK_COLOR << endl;
+            cout << GREEN_COLOR<< "Local Data Successfully Loaded"<< RESET_COLOR << endl;
             dll.loadFromCSV(filename);
             break;
 
         case 2:     //for lend equipments
             system("cls");
-            cout << GREEN_COLOR << "--Equipment Lending Option Selected--" <<GREEN_COLOR << endl;
-            cout << "................................................." << endl;
+            cout << GREEN_COLOR << "--Equipment Lending Option Selected--" << GREEN_COLOR << endl;;
+            cout << LIGHTBLUE_COLOR<< "----------------------------------------------------------" <<RESET_COLOR << endl;
             dll.lendEquipment();
             break;
 
         case 3:
             system("cls");
-            cout << GREEN_COLOR<< "Equipment Return Option Selected"<< GREEN_COLOR << endl;
+            cout << GREEN_COLOR<< "Equipment Return Option Selected"<<RESET_COLOR << endl;
             cout << "Enter the serial number of the equipment to be returned: ";
             cin >> serialNumber;
 
@@ -83,19 +83,19 @@ int main() {
 
         case 4:
             system("cls");
-            cout << PINK_COLOR << "Add Equipment Option Selected"<< PINK_COLOR << endl;
+            cout << GREEN_COLOR << "Add Equipment Option Selected"<< RESET_COLOR << endl;
             cout << "_______________________________" << endl;
             dll.addEquipmentToSelectedCategory();
             break;
         case 5:
             system("cls");
-            cout << PINK_COLOR<< "Add Equipment with Category Option is Selected" << PINK_COLOR << endl;
+            cout << GREEN_COLOR << "Add Equipment with Category Option is Selected" << RESET_COLOR << endl;
             cout << "______________________________________________" << endl;
             dll.addEquipment();
             break;
         case 6:
             system("cls");
-            cout << PINK_COLOR << "Delete an Equipment option selected" << PINK_COLOR << endl << endl;
+            cout << GREEN_COLOR << "Delete an Equipment option selected" << RESET_COLOR << endl << endl;
             cout << "Enter the serial number of the equipment you want to delete: ";
 
             cin >> serialNumber;
@@ -112,7 +112,7 @@ int main() {
 
         case 8:
             system("cls");
-            cout << PINK_COLOR << "Print All the Equipments Option Selected" << PINK_COLOR << endl;
+            cout << GREEN_COLOR << "Print All the Equipments Option Selected" << RESET_COLOR << endl;
             dll.printEquipmentByCategory();
 
             break;
