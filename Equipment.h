@@ -887,8 +887,30 @@ public:
         printUniqueCategories();
 
         int selectedCategory;
+
+        // Input validation loop
         cout << "Please select a category number to view the equipment count: ";
-        cin >> selectedCategory;
+        while (true) {
+            // Check if the input is a valid integer
+            if (cin >> selectedCategory) {
+                int categoryCount = getCategoryCount();
+
+                // Check if the entered category number is valid
+                if (selectedCategory >= 1 && selectedCategory <= categoryCount) {
+                    break; // Valid input, exit the loop
+                }
+                else {
+                    cout << "Invalid category number. Please enter a valid category number: ";
+                }
+            }
+            else {
+                // Clear the input buffer and ignore invalid input
+                cout << "Invalid input. Please enter a valid category number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
         cout << endl;
 
         LabEquipment* current = head;
@@ -934,6 +956,7 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
+
 
     
     
