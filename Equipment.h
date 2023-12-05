@@ -718,6 +718,39 @@ public:
         // Equipment with the specified serial number not found
         cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
     }
+
+    //Janitha
+    int getCategoryCount() {
+        if (head == nullptr) {
+            return 0; // If the list is empty, there are no categories
+        }
+
+        LabEquipment* current = head;
+        LabEquipment* temp;
+        int categoryCount = 0;
+
+        while (current != NULL) {
+            temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                categoryCount++;
+            }
+
+            current = current->next;
+        }
+
+        return categoryCount;
+    }
+
     // Hansika
     void printEquipmentByCategory() {
         // Display unique categories
@@ -726,8 +759,30 @@ public:
         printUniqueCategories();
 
         int categoryChoice;
-        cout << "Enter the category number to view the equipment under choosen category: ";
-        cin >> categoryChoice;
+        cout << "Enter the category number to view the equipment under the chosen category: ";
+
+        // Input validation loop
+        while (true) {
+            // Check if the input is a valid integer
+            if (cin >> categoryChoice) {
+                int categoryCount = getCategoryCount();
+
+                // Check if the entered category number is valid
+                if (categoryChoice >= 1 && categoryChoice <= categoryCount) {
+                    break; // Valid input, exit the loop
+                }
+                else {
+                    cout << "Invalid category number. Please enter a valid category number: ";
+                }
+            }
+            else {
+                // Clear the input buffer and ignore invalid input
+                cout << "Invalid input. Please enter a valid category number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
         cout << endl;
 
         LabEquipment* current = head;
@@ -775,6 +830,7 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
+
     // Sasini
     bool isValidDate(int day, int month, int year) {
         if (validateYear(year) && validateMonth(month) && validateDay(day, month, year)) {
