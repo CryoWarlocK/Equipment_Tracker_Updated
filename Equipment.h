@@ -127,6 +127,9 @@ public:
         tail = nullptr;
         size = 0;
     }
+    //Big O = O(n)
+    
+    
     // Janitha
     void clearInputBuffer() {
         cin.clear();
@@ -168,6 +171,9 @@ public:
 
         file.close();
     }
+    // O(n)
+    // 
+    // 
     // Janitha
     // Method to save equipment data to the CSV file
     void saveToCSV(const string& filename) {
@@ -186,7 +192,7 @@ public:
 
         file.close();
         cout << "Equipment data saved to '" << filename << "' successfully." << endl;
-    }
+    } //O(n)
     // Sasini
     // Insert equipment details into the list
     void insertLastWS(const
@@ -207,7 +213,7 @@ public:
             tail = temp;
             size++;
         }
-    }
+    } //O(n)
     // Sasini
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
         //Create the node
@@ -224,7 +230,7 @@ public:
             tail = temp;
             size++;
         }
-    }
+    } //O(n)
     // Hansika
     void print() {
         LabEquipment* current;
@@ -252,7 +258,7 @@ public:
 
         }
         
-    }
+    } //O(n)
     
     // Hansika
     void printUniqueCategories() {
@@ -289,6 +295,7 @@ public:
 
         cout << endl;
     }
+    // O(n^2)
     
     // Sasini
     void lendEquipment() {
@@ -379,7 +386,7 @@ public:
         if (!found) {
             cout << "Equipment with the specified serial number not found." << endl;
         }
-    }
+    } //O(n)
    
     // Janitha
 
@@ -410,7 +417,7 @@ public:
         insertLast(name, category, model, serial, 0);
 
         cout << "\nEquipment added successfully." << endl;
-    }
+    } //O(n)
 
     bool isSerialNumberExists(const string& serial) {
         LabEquipment* current = head;
@@ -421,7 +428,7 @@ public:
             current = current->next;
         }
         return false; // Serial number does not exist
-    }
+    } //O(n)
 
     // Janitha
     void addEquipmentToSelectedCategory() {
@@ -528,7 +535,8 @@ public:
 
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
-    }
+    } //O(n^2)
+
     // Hansika
     void deleteAt(int index) {
         if (head == nullptr || index < 0) {
@@ -567,7 +575,8 @@ public:
         }
         delete current;
         //cout << "Deleted at index " << index << " successfully." << endl;
-    }
+    }  //On
+
     // Hansika
     void deleteEquipmentBySerialNumber(const string& serialNumber) {
         LabEquipment* current = head;
@@ -623,7 +632,7 @@ public:
 
         // If equipment not found
         cout << "\nEquipment with serial number '" << serialNumber << "' not found." << endl;
-    }
+    } //On
 
    // Hansika
 
