@@ -4,7 +4,18 @@
 #include <iostream>
 #include <cstdlib>
 
-//8.16
+/* REFERENCES
+1. For clearing buffer and errors occured when we take multiple cin's 
+- https://stackoverflow.com/questions/5131647/why-would-we-call-cin-clear-and-cin-ignore-after-reading-input   
+- https://gist.github.com/DerexScript/d4220fdd40203978f8ba80c0010fa970
+
+2. For read and write with csv file
+- https://www.tutorialspoint.com/cplusplus/cpp_files_streams.htm
+// We only used this file to store the data in the doubly linked list when user choose exit or save, and read data and insert them
+back to the DLL when user choose load data.
+
+
+*/
 
 using namespace std;
 //Node in our code to represent individual lab equipment
@@ -126,6 +137,9 @@ public:
         tail = nullptr;
         size = 0;
     }
+    //Big O = O(n)
+    
+    
     // Janitha
     void clearInputBuffer() {
         cin.clear();
@@ -149,12 +163,12 @@ public:
             string token;
             // Janitha
             // Parse the line using commas
-            string data[10];  // Assuming there are 8 fields in the CSV data
+            string data[10];  // We have 10 fields to load from csv file
             int index = 0;
             while (getline(ss, token, ',')) {
                 data[index++] = token;
                 if (index >=10) {
-                    break;  // Assuming there are 8 fields in the CSV data
+                    break;   
                 }
             }
            
@@ -162,12 +176,16 @@ public:
             if (index >= 10) {
                 insertLastWS(data[0], data[1], data[2], data[3], stoi(data[4]), data[5], data[6], stoi(data[7]), stoi(data[8]), stoi(data[9]));
             }
+            //stoi used to convert the loaded string type csv data to integers to work with other methods
         }
 
         file.close();
     }
+    // O(n)
+    // 
+    // 
     // Janitha
-    // Method to save equipment data to a CSV file
+    // Method to save equipment data to the CSV file
     void saveToCSV(const string& filename) {
         ofstream file(filename);
         if (!file.is_open()) {
@@ -184,11 +202,11 @@ public:
 
         file.close();
         cout << "Equipment data saved to '" << filename << "' successfully." << endl;
-    }
+    } //O(n)
     // Sasini
     // Insert equipment details into the list
-    void insertLastWS(
-        const string& N, const string& cat, const string& mod, const string& Snum,
+    void insertLastWS(const
+        const string& N,  string& cat, const string& mod, const string& Snum,
         bool lent, const string& studentName, const string& registerNumber, const int& lDate, const int& lMonth, const int& lYear
     ) {
         // Create the node
@@ -205,7 +223,7 @@ public:
             tail = temp;
             size++;
         }
-    }
+    } //O(n)
     // Sasini
     void insertLast(string N, string cat, string mod, string Snum, bool lent) {
         //Create the node
@@ -222,9 +240,12 @@ public:
             tail = temp;
             size++;
         }
+
     }
     // Hansi
+  //O(n)
     // Print function
+
     void print() {
         LabEquipment* current;
         current = head; // initialize current with the head of the linked list
@@ -252,7 +273,7 @@ public:
 
         }
         
-    }
+    } //O(n)
     
     // Hansi
     //Function to print unique categories found in the list labEquipment
@@ -290,6 +311,7 @@ public:
 
         cout << endl;
     }
+    // O(n^2)
     
     // Sasini
     void lendEquipment() {
@@ -380,7 +402,7 @@ public:
         if (!found) {
             cout << "Equipment with the specified serial number not found." << endl;
         }
-    }
+    } //O(n)
    
     // Janitha
 
@@ -411,7 +433,7 @@ public:
         insertLast(name, category, model, serial, 0);
 
         cout << "\nEquipment added successfully." << endl;
-    }
+    } //O(n)
 
     bool isSerialNumberExists(const string& serial) {
         LabEquipment* current = head;
@@ -422,11 +444,11 @@ public:
             current = current->next;
         }
         return false; // Serial number does not exist
-    }
+    } //O(n)
 
     // Janitha
     void addEquipmentToSelectedCategory() {
-        // Check if the list is empty
+        // Check if the list is empty or not
         if (head == nullptr) {
             cout << "The list is empty." << endl;
             return;
@@ -529,13 +551,15 @@ public:
 
         // If the category is not found
         cout << "Invalid category number. Equipment not added." << endl;
-    }
+
+    }//O(n^2)
 
     // Hansi
     // Function to delete an equipment at a given index
 
     void deleteAt(int index) { // check for invalid conditions
         if (head == nullptr || index < 0) { // Ensuring that the list is non empty and index is non negative
+
             cout << "Invalid operation: List is empty or index is negative." << endl;
             return;
         }
@@ -571,7 +595,9 @@ public:
         }
         delete current;
         //cout << "Deleted at index " << index << " successfully." << endl;
-    }
+
+    }//On
+
 
 
     // Hansika
@@ -629,7 +655,7 @@ public:
 
         // If equipment not found
         cout << "\nEquipment with serial number '" << serialNumber << "' not found." << endl;
-    }
+    } //On
 
 
    // Hansika
@@ -690,20 +716,25 @@ public:
                     cout << "Student Register Number    : " << current->studentRegisterNumber << endl;
                     cout << "Date of the record(YYYY-MM-DD) : " << current->lendYear << "-" << current->lendMonth << "-"
                         << current->lendDate << endl << endl;
+                    // Mark the equipment as available
+                    current->isLent = false;
+
+                    // Clear student data
+                    current->studentName = "NULL";
+                    current->studentRegisterNumber = "NULL";
+                    current->lendDate = INT_MIN;
+                    current->lendMonth = INT_MIN;
+                    current->lendYear = INT_MIN;
+
+                    cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
+                    return;
                 }
 
-                // Mark the equipment as available
-                current->isLent = false;
-
-                // Clear student data
-                current->studentName = "NULL";
-                current->studentRegisterNumber = "NULL";
-                current->lendDate = INT_MIN;
-                current->lendMonth = INT_MIN;
-                current->lendYear = INT_MIN;
-
-                cout << "Equipment with serial number '" << serialNumber << "' returned successfully." << endl;
-                return;
+                else {
+                    cout << "The equipment has not been borrowed and is available in the laboratory." << endl;
+                    return;
+                
+                }
             }
             current = current->next;
         }
@@ -712,9 +743,41 @@ public:
         cout << "Equipment with serial number '" << serialNumber << "' not found." << endl;
     }
 
-    // Hansi
 
-    // Print Equipments reated to specified categories 
+    //Janitha
+    int getCategoryCount() {
+        if (head == nullptr) {
+            return 0; // If the list is empty, there are no categories
+        }
+
+        LabEquipment* current = head;
+        LabEquipment* temp;
+        int categoryCount = 0;
+
+        while (current != NULL) {
+            temp = head;
+            bool isUnique = true;
+
+            while (temp != current) {
+                if (temp->category == current->category) {
+                    isUnique = false;
+                    break;
+                }
+                temp = temp->next;
+            }
+
+            if (isUnique) {
+                categoryCount++;
+            }
+
+            current = current->next;
+        }
+
+        return categoryCount;
+    }
+
+    // Hansika
+
     void printEquipmentByCategory() {
         // Display unique categories
         cout << "Unique Categories" << endl;
@@ -722,8 +785,30 @@ public:
         printUniqueCategories();
 
         int categoryChoice;
-        cout << "Enter the category number to view the equipment under choosen category: ";
-        cin >> categoryChoice;
+        cout << "Enter the category number to view the equipment under the chosen category: ";
+
+        // Input validation loop
+        while (true) {
+            // Check if the input is a valid integer
+            if (cin >> categoryChoice) {
+                int categoryCount = getCategoryCount();
+
+                // Check if the entered category number is valid
+                if (categoryChoice >= 1 && categoryChoice <= categoryCount) {
+                    break; // Valid input, exit the loop
+                }
+                else {
+                    cout << "Invalid category number. Please enter a valid category number: ";
+                }
+            }
+            else {
+                // Clear the input buffer and ignore invalid input
+                cout << "Invalid input. Please enter a valid category number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
         cout << endl;
         //Traverse the equipment list
         LabEquipment* current = head;
@@ -771,6 +856,7 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
+
     // Sasini
     bool isValidDate(int day, int month, int year) {
         if (validateYear(year) && validateMonth(month) && validateDay(day, month, year)) {
@@ -827,8 +913,30 @@ public:
         printUniqueCategories();
 
         int selectedCategory;
+
+        // Input validation loop
         cout << "Please select a category number to view the equipment count: ";
-        cin >> selectedCategory;
+        while (true) {
+            // Check if the input is a valid integer
+            if (cin >> selectedCategory) {
+                int categoryCount = getCategoryCount();
+
+                // Check if the entered category number is valid
+                if (selectedCategory >= 1 && selectedCategory <= categoryCount) {
+                    break; // Valid input, exit the loop
+                }
+                else {
+                    cout << "Invalid category number. Please enter a valid category number: ";
+                }
+            }
+            else {
+                // Clear the input buffer and ignore invalid input
+                cout << "Invalid input. Please enter a valid category number: ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
         cout << endl;
 
         LabEquipment* current = head;
@@ -874,6 +982,7 @@ public:
             cout << "Invalid category number selected." << endl;
         }
     }
+
 
     
     
