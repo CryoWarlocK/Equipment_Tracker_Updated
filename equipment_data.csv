@@ -14,7 +14,7 @@ Fume Hood,Tools,Labconco Protector XStream,FH-35791,0,NULL,NULL,-1,-1,-1
 Microplate Reader,Measurement,BioTek Synergy H1,MR-24680,1,Susan White,EG/2023/1357,12,2,2023
 Thermal Cycler,Signal,Applied Biosystems Veriti,TC-97531,0,NULL,NULL,-1,-1,-1
 Magnetic Field Meter,Physics,Lake Shore 475,MM-86420,1,Michael Taylor,EG/2022/9876,5,6,2022
-Analytical Balance,Measurement,Mettler Toledo XS205,AB-13579,0,NULL,NULL,-1,-1,-1
+Analytical Balance,Measurement,Mettler Toledo XS205,EE-1111,0,NULL,NULL,-1,-1,-1
 Shaker,Tools,Heidolph Titramax 1000,SB-97531,1,Linda Davis,EG/2023/5678,17,11,2023
 Ultrasonic Cleaner,Tools,Branson CPX-952-317R,UC-97531,0,NULL,NULL,-1,-1,-1
 Water Bath,Tools,Julabo TW20,WB-24680,1,Chris Evans,EG/2022/2468,9,4,2022
