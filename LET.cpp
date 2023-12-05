@@ -46,7 +46,7 @@ int main() {
         cout << " 4. Add Equipment by Selecting Existing Category " << endl;
         cout << " 5. Add Equipment with Category" << endl;
         cout << " 6. Delete an Equipment " << endl;
-        cout << " 7. Search Equipment " << endl;
+        cout << " 7. Search Equipment by serial " << endl;
         cout << " 8. Print Equipment Relevant to Its' Category" << endl;
         cout << " 9. Save Data locally" << endl;
         cout << "10. Number of Equipments in a selected category." << endl;
